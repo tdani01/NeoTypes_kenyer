@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -o bin $(ls *.c) -lm && ./bin
