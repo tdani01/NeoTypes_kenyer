@@ -3,18 +3,20 @@
 
 int main()
 {
-    array* Array = arrNew();
+    array arr = arrNew();
 
-    arrInit(Array, 4, 1, 2, 3, 4);
-    arrAppend(Array, 7);
-    arrInsert(Array, 0, 69);
-    arrInsert(Array, Array->Length, 49);
-    arrRemove(Array, 6);
+    arrInit(arr, 4, 1, 2, 3, 4);
 
-    for (uint64 i = 0; i < Array->Length; i++)
+    arrInsert(arr, 0, 69);
+    arrInsert(arr, arr->Length, 96);
+    arrInsert(arr, arr->Length, 44);
+    arrRemove(arr, arr->Length - 2);
+
+    for (uint64 i = 0; i < arr->Length; i++)
     {
-        printf("%d\n", Array->Values[i]);
+        printf("%d ", arr->Values[i]);
     }
+    printf("\n%d\n", arr->Length);
 
     return 0;
 }

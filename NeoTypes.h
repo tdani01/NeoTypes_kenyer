@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
@@ -13,16 +14,27 @@ typedef signed int sint32;
 typedef unsigned long uint64;
 typedef signed long sint64;
 
+uint64 asInt(double Value);
+double asDouble(sint64 Value);
+
 typedef struct
 {
-    sint64* Values;
+    void* *Values;
     uint64 Length;
-} array;
+}* array;
+array arrNew();
+uint16 arrInit(array Array, uint64 Length, void* Values, ...);
+uint16 arrInsert(array Array, uint64 Index, void* Value);
+uint16 arrRemove(array Array, uint64 Index);
 
-array* arrNew();
-uint16 arrInit(array* Array, uint64 Length, sint64 Values, ...);
-uint16 arrAppend(array* Array, sint64 Value);
-uint16 arrInsert(array* Array, uint64 Index, sint64 Value);
-uint16 arrRemove(array* Array, uint64 Index);
-sint64 asLong(double number);
-double asDouble(sint64 number);
+typedef struct
+{
+    char* String;
+    uint64 Lenght;
+} string;
+string* strNew();
+uint16 strInit(string* String, char* Characters);
+uint16 strAppend(string* String, char Character);
+uint16 strConcat(string* String, uint64 Count, char* Characters, ...);
+uint16 strRead(string* String);
+boolean strCompare(char* Characters1, char* Characters2);
