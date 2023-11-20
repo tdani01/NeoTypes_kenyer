@@ -47,9 +47,9 @@ typedef struct
     uint64 Length;
     boolean Cache;
 }* list;
+typedef struct listNodeStruct* listNode;
 typedef struct
 {
     listNode Next;
     void* Value;
-}* listNode;
-
+}* listNodeStruct;

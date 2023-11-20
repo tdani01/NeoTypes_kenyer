@@ -61,10 +61,6 @@ uint16 arrRemove(array Array, uint64 Index)
     }
 
     Array->Values = realloc(Array->Values, sizeof(void*) * (Array->Length - 1));
-    if (Array->Values == NULL)
-    {
-        return 1;
-    }
     Array->Length--;
 
     return 0;
