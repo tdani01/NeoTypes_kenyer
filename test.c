@@ -3,20 +3,11 @@
 
 int main()
 {
-    array arr = arrNew();
+    string str = strNew();
+    strInit(str, "Hello");
+    strConcat(str, 3, str->String, " ", "World!");
 
-    arrInit(arr, 4, 1, 2, 3, 4);
-
-    arrInsert(arr, 0, 69);
-    arrInsert(arr, arr->Length, 96);
-    arrInsert(arr, arr->Length, 44);
-    arrRemove(arr, arr->Length - 2);
-
-    for (uint64 i = 0; i < arr->Length; i++)
-    {
-        printf("%d ", arr->Values[i]);
-    }
-    printf("\n%d\n", arr->Length);
+    printf("%s %d %d\n", str->String, str->Lenght, strLength(str->String));
 
     return 0;
 }

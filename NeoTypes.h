@@ -31,10 +31,11 @@ typedef struct
 {
     char* String;
     uint64 Lenght;
-} string;
-string* strNew();
-uint16 strInit(string* String, char* Characters);
-uint16 strAppend(string* String, char Character);
-uint16 strConcat(string* String, uint64 Count, char* Characters, ...);
-uint16 strRead(string* String);
+}* string;
+uint64 strLength(char* Characters);
+string strNew();
+uint16 strInit(string String, char* Characters);
+uint16 strAppend(string String, char Character);
+uint16 strConcat(string String, uint64 Count, char* Characters, ...);
+uint16 strRead(string String);
 boolean strCompare(char* Characters1, char* Characters2);

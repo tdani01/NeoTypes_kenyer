@@ -12,12 +12,12 @@ uint64 strLength(char* Characters)
         length++;
     }
 
-    return length;
+    return length + 1;
 }
 
-string* strNew()
+string strNew()
 {
-    string* String;
+    string String;
 
     String = malloc(sizeof(string));
     String->String = malloc(sizeof(char) * 1);
@@ -27,23 +27,23 @@ string* strNew()
     return String;
 }
 
-uint16 strInit(string* String, char* Characters)
+uint16 strInit(string String, char* Characters)
 {
     free(String->String);
     
     String->Lenght = strLength(Characters);
-    String->String = malloc(sizeof(char) * (String->Lenght + 1));
+    String->String = malloc(sizeof(char) * String->Lenght);
 
     for (uint64 i = 0; i < String->Lenght; i++)
     {
         String->String[i] = Characters[i];
     }
-    String->String[String->Lenght] = '\0';
+    String->String[String->Lenght - 1] = '\0';
 
     return 0;
 }
 
-uint16 strAppend(string* String, char Character)
+uint16 strAppend(string String, char Character)
 {
     String->String = realloc(String->String, String->Lenght + 1);
     String->String[String->Lenght - 1] = Character;
@@ -53,7 +53,7 @@ uint16 strAppend(string* String, char Character)
     return 0;
 }
 
-uint16 strConcat(string* String, uint64 Count, char* Characters, ...)
+uint16 strConcat(string String, uint64 Count, char* Characters, ...)
 {
     char* StringTMP;
 
@@ -61,31 +61,32 @@ uint16 strConcat(string* String, uint64 Count, char* Characters, ...)
     uint64 current;
     char* CharactersTemp;
 
-    String->Lenght = strLength(Characters);
     va_start(CharactersArgs, Characters);
+    String->Lenght = strLength(Characters) - 1;
     for (uint64 i = 1; i < Count; i++)
     {
-        String->Lenght += strLength(va_arg(CharactersArgs, char*));
+        String->Lenght += strLength(va_arg(CharactersArgs, char*)) - 1;
     }
+    String->Lenght++;
     va_end(CharactersArgs);
 
-    StringTMP = malloc(sizeof(char) * (String->Lenght + 1));
+    StringTMP = malloc(sizeof(char) * String->Lenght);
 
-    for (current = 0; current < strLength(Characters); current++)
+    va_start(CharactersArgs, Characters);
+    for (current = 0; current < strLength(Characters) - 1; current++)
     {
         StringTMP[current] = Characters[current];
     }
-    va_start(CharactersArgs, Characters);
     for (uint64 i = 1; i < Count; i++)
     {
         CharactersTemp = va_arg(CharactersArgs, char*);
-        for (uint64 j = 0; j < strLength(CharactersTemp); j++)
+        for (uint64 j = 0; j < strLength(CharactersTemp) - 1; j++)
         {
             StringTMP[current] = CharactersTemp[j];
             current++;
         }
     }
-    String->String[String->Lenght] = '\0';
+    String->String[String->Lenght - 1] = '\0';
     va_end(CharactersArgs);
 
     free(String->String);
@@ -94,7 +95,7 @@ uint16 strConcat(string* String, uint64 Count, char* Characters, ...)
     return 0;
 }
 
-uint16 strRead(string* String) //broken
+uint16 strRead(string String) //broken
 {
     char Character;
 
