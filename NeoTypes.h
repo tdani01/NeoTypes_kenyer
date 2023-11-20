@@ -38,4 +38,5 @@ uint16 strInit(string String, char* Characters);
 uint16 strAppend(string String, char Character);
 uint16 strConcat(string String, uint64 Count, char* Characters, ...);
 uint16 strRead(string String);
+uint16 strSplit(array Array, string String, char Character);
 boolean strCompare(char* Characters1, char* Characters2);

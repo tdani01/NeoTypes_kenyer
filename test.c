@@ -4,10 +4,15 @@
 int main()
 {
     string str = strNew();
-    strInit(str, "Hello");
-    strConcat(str, 3, str->String, " ", "World!");
+    strInit(str, "Hello World split this string !");
 
-    printf("%s %d %d\n", str->String, str->Lenght, strLength(str->String));
+    array arr = arrNew();
+
+    strSplit(arr, str, ' ');
+    for (uint64 i = 0; i < arr->Length; i++)
+    {
+        printf("%s\n", ((string)arr->Values[i])->String);
+    }
 
     return 0;
 }

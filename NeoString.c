@@ -1,7 +1,5 @@
 #include "NeoTypes.h"
 
-//hosszakat kijavítani (\0 karakter)
-
 uint64 strLength(char* Characters)
 {
     uint64 length;
@@ -95,13 +93,37 @@ uint16 strConcat(string String, uint64 Count, char* Characters, ...)
     return 0;
 }
 
-uint16 strRead(string String) //broken
+uint16 strRead(string String)
 {
     char Character;
 
     while ((Character = getchar()) != '\n')
     {
         strAppend(String, Character);
+    }
+
+    return 0;
+}
+
+uint16 strSplit(array Array, string String, char Character)
+{
+    free(Array->Values);
+
+    Array->Values = NULL;
+    Array->Length = 0;
+
+    arrInsert(Array, Array->Length, strNew());
+    for (uint64 i = 0; i < String->Lenght - 1; i++)
+    {
+        if (String->String[i] != Character)
+        {
+            strAppend((string)Array->Values[Array->Length - 1], String->String[i]);
+        }
+        else
+        {
+            strAppend((string)Array->Values[Array->Length - 1], '\0');
+            arrInsert(Array, Array->Length, strNew());
+        }
     }
 
     return 0;
