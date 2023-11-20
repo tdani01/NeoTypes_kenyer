@@ -40,3 +40,16 @@ uint16 strConcat(string String, uint64 Count, char* Characters, ...);
 uint16 strRead(string String);
 uint16 strSplit(array Array, string String, char Character);
 boolean strCompare(char* Characters1, char* Characters2);
+
+typedef struct
+{
+    array List;
+    uint64 Length;
+    boolean Cache;
+}* list;
+typedef struct
+{
+    listNode Next;
+    void* Value;
+}* listNode;
+
