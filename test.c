@@ -3,15 +3,13 @@
 
 int main()
 {
-    string str = strNew();
-    strInit(str, "Hello World split this string !");
+    array arr = arrNew(0);
 
-    array arr = arrNew();
+    arrInit(arr, 4, 1, 2, 3, 4);
 
-    strSplit(arr, str, ' ');
     for (uint64 i = 0; i < arr->Length; i++)
     {
-        printf("%s\n", ((string)arr->Values[i])->String);
+        printf("%d\n", arr->Values[i]);
     }
 
     return 0;
