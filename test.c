@@ -2,12 +2,22 @@
 
 int main()
 {
-    string str = strNew();
-    strRead(str);
+    list lista = listNew();
 
-    DOUBLEtoSTR(STRtoDOUBLE(str->String, NULL), str);
+    for (uint64 i = 0; i < 1000000; i++)
+    {
+        listAppend(lista,(void*)i);
+    }
+    printf("appended\n");
 
-    printf("%s %ld\n", str->String, strLength(str->String));
+    listCache(lista, lista->Length);
+    printf("cached %d\n", lista->List->Length);
+
+    for (uint64 i = 0; i < lista->Length; i++)
+    {
+        printf("%d\n", listGet(lista, i)->Value);
+    }
+    printf("got\n");
 
     return 0;
 }
