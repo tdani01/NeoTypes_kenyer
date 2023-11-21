@@ -1,13 +1,26 @@
 #include "NeoTypes.h"
 
-uint64 STRtoUINT(char* Characters) //APPROVED
+uint64 STRtoUINT(char* Characters, boolean* Success) //APPROVED
 {
     uint64 result;
 
     result = 0;
     for (uint64 i = 0; i < strLength(Characters) - 1; i++)
     {
+        if ((Characters[i] < '0' || '9' < Characters[i]))
+        {
+            if (Success != NULL)
+            {
+                *Success = false;
+            }
+            return 0;
+        }
         result += (Characters[i] - '0') * pow(10, strLength(Characters) - 2 - i);
+    }
+
+    if (Success != NULL)
+    {
+        *Success = true;
     }
 
     return result;
@@ -31,13 +44,23 @@ uint16 UINTtoSTR(uint64 Number, string String) //APPROVED
     return 0;
 }
 
-sint64 STRtoSINT(char* Characters) //APPROVED
+//######################################################################################
+
+sint64 STRtoSINT(char* Characters, boolean* Success) //APPROVED
 {
     sint64 result;
 
     result = 0;
     for (uint64 i = 1; i < strLength(Characters) - 1; i++)
     {
+        if ((Characters[i] < '0' || '9' < Characters[i]))
+        {
+            if (Success != NULL)
+            {
+                *Success = false;
+            }
+            return 0;
+        }
         result += (Characters[i] - '0') * pow(10, strLength(Characters) - 2 - i);
     }
 
@@ -47,7 +70,20 @@ sint64 STRtoSINT(char* Characters) //APPROVED
     }
     else
     {
+        if ((Characters[0] < '0' || '9' < Characters[0]))
+        {
+            if (Success != NULL)
+            {
+                *Success = false;
+            }
+            return 0;
+        }
         result += (Characters[0] - '0') * pow(10, strLength(Characters) - 2);
+    }
+
+    if (Success != NULL)
+    {
+        *Success = true;
     }
 
     return result;
@@ -76,6 +112,8 @@ uint16 SINTtoSTR(sint64 Number, string String) //APPROVED
 
     return 0;
 }
+
+//######################################################################################
 
 double STRtoDOUBLE(char* Characters)
 {
@@ -142,7 +180,7 @@ uint16 DOUBLEtoSTR(double Number, string String)
     {
         strAppend(String, '.');
 
-        for (i = 0; fraction * pow(10, i) / 10 < 1; i++); //BROKEN
+        for (i = 0; fraction * pow(10, i) / 10 < 1; i++);
         fraction *= pow(10, i);
 
         for (i = 1; (uint64)round(fraction) / i > 10; i *= 10);

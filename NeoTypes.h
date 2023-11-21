@@ -58,9 +58,9 @@ typedef struct
 
 
 
-uint64 STRtoUINT(char* Characters);
+uint64 STRtoUINT(char* Characters, boolean* Success);
 uint16 UINTtoSTR(uint64 Number, string String);
-sint64 STRtoSINT(char* Characters);
+sint64 STRtoSINT(char* Characters, boolean* Success);
 uint16 SINTtoSTR(sint64 Number, string String);
 double STRtoDOUBLE(char* Characters);
 uint16 DOUBLEtoSTR(double Number, string String);
