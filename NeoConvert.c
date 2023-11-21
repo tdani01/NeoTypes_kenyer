@@ -115,7 +115,7 @@ uint16 SINTtoSTR(sint64 Number, string String) //APPROVED
 
 //######################################################################################
 
-double STRtoDOUBLE(char* Characters)
+double STRtoDOUBLE(char* Characters, boolean* Success) //APPROVED
 {
     double result;
 
@@ -134,10 +134,26 @@ double STRtoDOUBLE(char* Characters)
     result = 0;
     for (uint64 i = 1; i < decimal; i++)
     {
+        if ((Characters[i] < '0' || '9' < Characters[i]))
+        {
+            if (Success != NULL)
+            {
+                *Success = false;
+            }
+            return 0;
+        }
         result += (Characters[i] - '0') * pow(10, decimal - 1 - i);
     }
     for (uint64 i = decimal + 1; i < strLength(Characters) - 1; i++)
     {
+        if ((Characters[i] < '0' || '9' < Characters[i]))
+        {
+            if (Success != NULL)
+            {
+                *Success = false;
+            }
+            return 0;
+        }
         result += (Characters[i] - '0') * 1 / pow(10, i - decimal);
     }
 
@@ -147,7 +163,20 @@ double STRtoDOUBLE(char* Characters)
     }
     else
     {
+        if ((Characters[0] < '0' || '9' < Characters[0]))
+        {
+            if (Success != NULL)
+            {
+                *Success = false;
+            }
+            return 0;
+        }
         result += (Characters[0] - '0') * pow(10, decimal - 1);
+    }
+
+    if (Success != NULL)
+    {
+        *Success = true;
     }
 
     return result;
