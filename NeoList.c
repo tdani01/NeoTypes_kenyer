@@ -65,7 +65,7 @@ listNode listGet(list List, uint64 Index)
         CacheCoverage = List->Length / (List->List->Length - 1);
         CacheSection = Index / CacheCoverage;
 
-        result = (listNode)List->List->Values[CacheSection];
+        result = List->List->Values[CacheSection];
         for (uint64 i = 0; i < Index - CacheSection * CacheCoverage; i++)
         {
             result = result->Next;
@@ -87,6 +87,11 @@ uint16 listCache(list List, uint64 Cache)
 {
     listNode node;
     uint64 CacheCoverage;
+
+    if (Cache == 0 || List->Length < 3)
+    {
+        return 1;
+    }
 
     if (Cache > List->Length / 3)
     {
