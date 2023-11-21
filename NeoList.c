@@ -4,9 +4,10 @@ uint16 listCacheInit(array Array, uint64 Length, listNode First, listNode Last);
 uint16 listCacheInit(array Array, uint64 Length, listNode First, listNode Last)
 {
     free(Array->Values);
-    free(Array);
 
-    Array = arrNew(Length);
+    Array->Values = malloc(sizeof(void*) * Length);
+    Array->Length = Length;
+    
     Array->Values[0] = First;
     Array->Values[Array->Length - 1] = Last;
     
