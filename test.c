@@ -6,7 +6,7 @@ int main()
 
     for (uint64 i = 0; i < 1000000; i++)
     {
-        listAppend(lista,(void*)i);
+        listAppend(lista, (void*)i);
     }
     printf("appended\n");
 
