@@ -4,10 +4,10 @@ int main()
 {
     string str = strNew();
     strRead(str);
-    //SINTtoSTR(STRtoSINT(str->String), str);
-    boolean Success;
-    printf("%lf %ld\n", STRtoDOUBLE(str->String, &Success), strLength(str->String));
-    printf("%d\n", Success);
+    double a = STRtoDOUBLE(str->String, NULL);
+    DOUBLEtoSTR(a, str);
+    printf("%lf\n", a);
+    printf("%lf %ld\n", STRtoDOUBLE(str->String, NULL), strLength(str->String));
 
     return 0;
 }

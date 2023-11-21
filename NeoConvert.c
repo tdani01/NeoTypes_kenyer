@@ -209,8 +209,11 @@ uint16 DOUBLEtoSTR(double Number, string String)
     {
         strAppend(String, '.');
 
+        //----BROKEN-------
         for (i = 0; fraction * pow(10, i) / 10 < 1; i++);
         fraction *= pow(10, i);
+        printf("frac: %lf\n", fraction);
+        //-------
 
         for (i = 1; (uint64)round(fraction) / i > 10; i *= 10);
         for (; i > 0; i /= 10)
