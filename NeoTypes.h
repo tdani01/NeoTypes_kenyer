@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <math.h>
 
 #define true 1
 #define false 0
@@ -53,3 +54,12 @@ typedef struct
     listNode Next;
     void* Value;
 }* listNodeStruct;
+
+
+
+
+uint64 STRtoUINT(char* Characters);
+uint16 UINTtoSTR(string String, uint64 Number);
+sint64 STRtoSINT(char* Characters);
+uint16 SINTtoSTR(string String, sint64 Number);
+double STRtoDOUBLE(char* Characters); //broken

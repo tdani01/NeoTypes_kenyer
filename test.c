@@ -2,12 +2,10 @@
 
 int main()
 {
-    array arr = arrNew(3);
+    string str = strNew();
+    strRead(str);
 
-    for (uint64 i = 0; i < arr->Length; i++)
-    {
-        printf("%d\n", arr->Values[i]);
-    }
+    printf("%lf %d\n", STRtoDOUBLE(str->String), strLength(str->String));
 
     return 0;
 }
