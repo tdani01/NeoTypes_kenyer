@@ -1,6 +1,6 @@
 #include "NeoTypes.h"
 
-uint64 STRtoUINT(char* Characters, boolean* Success) //APPROVED
+uint64 STRtoUINT(char* Characters, boolean* Success)
 {
     uint64 result;
 
@@ -25,7 +25,7 @@ uint64 STRtoUINT(char* Characters, boolean* Success) //APPROVED
 
     return result;
 }
-uint16 UINTtoSTR(uint64 Number, string String) //APPROVED
+uint16 UINTtoSTR(uint64 Number, string String)
 {
     free(String->String);
     free(String);
@@ -46,7 +46,7 @@ uint16 UINTtoSTR(uint64 Number, string String) //APPROVED
 
 //######################################################################################
 
-sint64 STRtoSINT(char* Characters, boolean* Success) //APPROVED
+sint64 STRtoSINT(char* Characters, boolean* Success)
 {
     sint64 result;
 
@@ -88,7 +88,7 @@ sint64 STRtoSINT(char* Characters, boolean* Success) //APPROVED
 
     return result;
 }
-uint16 SINTtoSTR(sint64 Number, string String) //APPROVED
+uint16 SINTtoSTR(sint64 Number, string String)
 {
     free(String->String);
     free(String);
@@ -115,7 +115,7 @@ uint16 SINTtoSTR(sint64 Number, string String) //APPROVED
 
 //######################################################################################
 
-double STRtoDOUBLE(char* Characters, boolean* Success) //APPROVED
+double STRtoDOUBLE(char* Characters, boolean* Success)
 {
     double result;
 
@@ -198,7 +198,8 @@ uint16 DOUBLEtoSTR(double Number, string String)
     }
 
     whole = (uint64)trunc(Number);
-    fraction = Number - whole;
+    fraction = Number - trunc(Number);
+
     for (i = 1; whole / i > 10; i *= 10);
     for (; i > 0; i /= 10)
     {
@@ -209,11 +210,7 @@ uint16 DOUBLEtoSTR(double Number, string String)
     {
         strAppend(String, '.');
 
-        //----BROKEN-------
-        for (i = 0; fraction * pow(10, i) / 10 < 1; i++);
-        fraction *= pow(10, i);
-        printf("frac: %lf\n", fraction);
-        //-------
+        for (; fraction - trunc(fraction) > 0; fraction *= 10);
 
         for (i = 1; (uint64)round(fraction) / i > 10; i *= 10);
         for (; i > 0; i /= 10)

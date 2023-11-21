@@ -5,6 +5,8 @@
 
 //________________NeoTypes.h_______________
 
+#define EPSILON 0.00000000000001
+
 #define true 1
 #define false 0
 typedef char boolean;
