@@ -1,7 +1,7 @@
 #include "NeoTypes.h"
 
 uint16 listCacheInit(array Array, uint64 Length, listNode First, listNode Last);
-uint16 listCacheInit(array Array, uint64 Length, listNode First, listNode Last)
+uint16 listCacheInit(array Array, uint64 Length, listNode First, listNode Last) //APPROVED
 {
     free(Array->Values);
 
@@ -14,7 +14,7 @@ uint16 listCacheInit(array Array, uint64 Length, listNode First, listNode Last)
     return 0;
 }
 
-list listNew()
+list listNew() //APPROVED
 {
     list result;
 
@@ -26,7 +26,7 @@ list listNew()
     return result;
 }
 
-uint16 listAppend(list List, void* Value)
+uint16 listAppend(list List, void* Value) //APPROVED
 {
     if (List->List->Length == 0)
     {
@@ -54,7 +54,7 @@ uint16 listAppend(list List, void* Value)
     return 0;
 }
 
-listNode listGet(list List, uint64 Index)
+listNode listGet(list List, uint64 Index) //MIGHT BE BROKEN
 {
     listNode result;
 
@@ -83,7 +83,7 @@ listNode listGet(list List, uint64 Index)
     return result;
 }
 
-uint16 listCache(list List, uint64 Cache)
+uint16 listCache(list List, uint64 Cache) //BROKEN
 {
     listNode node;
     uint64 CacheCoverage;
