@@ -2,22 +2,26 @@
 
 int main()
 {
-    list lista = listNew();
+    list List = listNew();
 
-    for (uint64 i = 0; i < 1000000; i++)
+    for (uint16 i = 0; i < 3; i++)
     {
-        listAppend(lista, (void*)i);
-    }
-    printf("appended\n");
+        for (uint64 i = 0; i < 10; i++)
+        {
+            listAppend(List, (void*)i);
+        }
 
-    listCache(lista, lista->Length);
-    printf("cached %d\n", lista->List->Length);
+        printf("--------\n");
+        printf("%d\n", List->Length);
+        printf("--------\n");
 
-    for (uint64 i = 0; i < lista->Length; i++)
-    {
-        printf("%d\n", listGet(lista, i)->Value);
+        listCache(List, List->Length);
+
+        for (uint64 i = 0; i < List->Length; i++)
+        {
+            printf("%d\n", listGet(List, i)->Value);
+        }
     }
-    printf("got\n");
 
     return 0;
 }

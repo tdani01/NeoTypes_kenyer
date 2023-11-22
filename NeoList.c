@@ -102,14 +102,17 @@ uint16 listCache(list List, uint64 Cache)
 
     CacheCoverage = List->Length / Cache;
     node = ((listNode)List->List->Values[0])->Next;
+    printf("Cache start---------%d\n", List->List->Length);
     for (uint64 i = 1; i < List->Length - 1; i++)
     {
         if (i % CacheCoverage == 0)
         {
             List->List->Values[i / CacheCoverage] = node;
+            printf("%d\n", i / CacheCoverage);
         }
         node = node->Next;
     }
+    printf("Cache end---------\n");
     List->Cache = true;
 
     return 0;
