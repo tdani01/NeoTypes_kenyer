@@ -9,7 +9,7 @@ int main()
         listAppend(List, (void*)i);
     }
 
-    //listCache(List, 1);
+    listCache(List, 1);
 
     for (uint64 i = 0; i < List->Length; i++)
     {
