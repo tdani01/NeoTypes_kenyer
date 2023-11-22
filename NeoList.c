@@ -78,12 +78,9 @@ uint16 listCache(list List, uint64 CacheCoverage) //APPROVED
 
     //Calculate the size of the cache
     CacheSize = 0;
-    for (uint64 i = 0; i < List->Length; i++)
+    for (uint64 i = 0; i < List->Length; i += CacheCoverage)
     {
-        if (i % List->CacheCoverage == 0)
-        {
-            CacheSize++;
-        }
+        CacheSize++;
     }
 
     //Initialize the cache
