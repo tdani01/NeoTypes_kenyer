@@ -5,7 +5,15 @@ list listNew() //APPROVED
     list result;
 
     result = malloc(sizeof(list));
+    if (result == NULL)
+    {
+        return NULL;
+    }
     result->Cache = malloc(sizeof(listCache_t));
+    if (result->Cache == NULL)
+    {
+        return NULL;
+    }
     result->Cache->Nodes = NULL;
     result->Cache->Size = 0;
     result->Cache->Coverage = 0;
@@ -22,6 +30,10 @@ uint16 listAppend(list List, void* Value) //APPROVED
     if (List->Length == 0)
     {
         first = malloc(sizeof(listNode));
+        if (first == NULL)
+        {
+            return 1;
+        }
         first->Value = Value;
         first->Next = NULL;
 
@@ -30,6 +42,10 @@ uint16 listAppend(list List, void* Value) //APPROVED
     else
     {
         List->Cache->Nodes[List->Cache->Size - 1]->Next = malloc(sizeof(listNode));
+        if (List->Cache->Nodes[List->Cache->Size - 1]->Next == NULL)
+        {
+            return 1;
+        }
         List->Cache->Nodes[List->Cache->Size - 1]->Next->Value = Value;
         List->Cache->Nodes[List->Cache->Size - 1]->Next->Next = NULL;
 
@@ -43,6 +59,10 @@ uint16 listAppend(list List, void* Value) //APPROVED
 
     free(List->Cache->Nodes);
     List->Cache->Nodes = malloc(sizeof(listNode) * 2);
+    if (List->Cache->Nodes == NULL)
+    {
+        return 1;
+    }
     List->Cache->Nodes[0] = first;
     List->Cache->Nodes[1] = last;
 
@@ -109,6 +129,10 @@ uint16 listCache(list List, uint64 CacheCoverage) //APPROVED
     //Initialize the cache
     free(List->Cache->Nodes);
     List->Cache->Nodes = malloc(sizeof(listNode) * List->Cache->Size);
+    if (List->Cache->Nodes == NULL)
+    {
+        return 1;
+    }
     List->Cache->Nodes[0] = first;
     List->Cache->Nodes[List->Cache->Size - 1] = last;
 
