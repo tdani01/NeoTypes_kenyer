@@ -77,29 +77,32 @@ uint16 listInsert(list List, uint64 Index, void* Value) //UNCOMPLETED
     listNode first;
     listNode last;
 
-    if (List->Length == 0)
+    if (Index == 0)
     {
-        first = malloc(sizeof(listNode));
-        if (first == NULL)
+        if (List->Length == 0)
         {
-            return 1;
-        }
-        first->Value = Value;
-        first->Next = NULL;
+            first = malloc(sizeof(listNode));
+            if (first == NULL)
+            {
+                return 1;
+            }
+            first->Value = Value;
+            first->Next = NULL;
 
-        last = first;
-    }
-    else if (Index == 0)
-    {
-        first = malloc(sizeof(listNode));
-        if (first == NULL)
+            last = first;
+        }
+        else
         {
-            return 1;
-        }
-        first->Value = Value;
-        first->Next = List->Cache->Nodes[0];
+            first = malloc(sizeof(listNode));
+            if (first == NULL)
+            {
+                return 1;
+            }
+            first->Value = Value;
+            first->Next = List->Cache->Nodes[0];
 
-        last = List->Cache->Nodes[List->Cache->Size - 1];
+            last = List->Cache->Nodes[List->Cache->Size - 1];
+        }
     }
     else
     {
