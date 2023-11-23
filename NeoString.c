@@ -128,7 +128,7 @@ uint16 strRead(string String)
     return 0;
 }
 
-uint16 strSplit(array Array, string String, char Character)
+uint16 strSplit(array Array, char* Characters, char Character)
 {
     free(Array->Values);
 
@@ -143,11 +143,11 @@ uint16 strSplit(array Array, string String, char Character)
         return 1;
     }
     arrInsert(Array, Array->Length, StringTMP);
-    for (uint64 i = 0; i < String->Lenght - 1; i++)
+    for (uint64 i = 0; i < strLength(Characters) - 1; i++)
     {
-        if (String->String[i] != Character)
+        if (Characters[i] != Character)
         {
-            if (strAppend((string)Array->Values[Array->Length - 1], String->String[i]) == 1)
+            if (strAppend((string)Array->Values[Array->Length - 1], Characters[i]) == 1)
             {
                 return 1;
             }

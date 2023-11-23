@@ -5,7 +5,7 @@ int main()
     string str = strNew();
     strInit(str, "hello world szia uram hogy vagy ma !");
     array arr = arrNew(0);
-    strSplit(arr, str, ' ');
+    strSplit(arr, str->String, ' ');
     for (uint64 i = 0; i < arr->Length; i++)
     {
         printf("%s\n", ((string)arr->Values[i])->String);
