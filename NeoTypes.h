@@ -39,7 +39,7 @@ uint16 arrRemove(array Array, uint64 Index);
 
 uint16 arrPurge(array Array);
 
-//_______________NeoString.c_______________ //HANDLE STRNEW() ERRORS
+//_______________NeoString.c_______________ // COMPLETED
 
 typedef struct
 {
