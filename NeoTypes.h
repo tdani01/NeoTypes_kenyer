@@ -62,7 +62,7 @@ boolean strCompare(char* Characters1, char* Characters2);
 
 uint16 strPurge(string String);
 
-//________________NeoList.c________________ //UNCOMPLETED
+//________________NeoList.c________________ // COMPLETED
 
 typedef struct listCacheStruct* listCache_t;
 typedef struct listNodeStruct* listNode;
