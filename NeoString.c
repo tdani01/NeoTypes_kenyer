@@ -1,5 +1,7 @@
 #include "NeoTypes.h"
 
+//TODO strNew() funkciónak a lehetséges NULL visszatéréseinek kezelése
+
 uint64 strLength(char* Characters)
 {
     uint64 length;
@@ -18,7 +20,15 @@ string strNew()
     string String;
 
     String = malloc(sizeof(string));
+    if (String == NULL)
+    {
+        return NULL;
+    }
     String->String = malloc(sizeof(char) * 1);
+    if (String->String == NULL)
+    {
+        return NULL;
+    }
     String->String[0] = '\0';
     String->Lenght = 1;
 
@@ -31,6 +41,10 @@ uint16 strInit(string String, char* Characters)
     
     String->Lenght = strLength(Characters);
     String->String = malloc(sizeof(char) * String->Lenght);
+    if (String->String == NULL)
+    {
+        return 1;
+    }
 
     for (uint64 i = 0; i < String->Lenght; i++)
     {
@@ -44,6 +58,10 @@ uint16 strInit(string String, char* Characters)
 uint16 strAppend(string String, char Character)
 {
     String->String = realloc(String->String, String->Lenght + 1);
+    if (String->String == NULL)
+    {
+        return 1;
+    }
     String->String[String->Lenght - 1] = Character;
     String->String[String->Lenght] = '\0';
     String->Lenght++;
@@ -69,6 +87,10 @@ uint16 strConcat(string String, uint64 Count, char* Characters, ...)
     va_end(CharactersArgs);
 
     StringTMP = malloc(sizeof(char) * String->Lenght);
+    if (StringTMP == NULL)
+    {
+        return 1;
+    }
 
     va_start(CharactersArgs, Characters);
     for (current = 0; current < strLength(Characters) - 1; current++)
@@ -99,7 +121,10 @@ uint16 strRead(string String)
 
     while ((Character = getchar()) != '\n')
     {
-        strAppend(String, Character);
+        if (strAppend(String, Character) == 1)
+        {
+            return 1;
+        }
     }
 
     return 0;
@@ -117,11 +142,17 @@ uint16 strSplit(array Array, string String, char Character)
     {
         if (String->String[i] != Character)
         {
-            strAppend((string)Array->Values[Array->Length - 1], String->String[i]);
+            if (strAppend((string)Array->Values[Array->Length - 1], String->String[i]) == 1)
+            {
+                return 1;
+            }
         }
         else
         {
-            strAppend((string)Array->Values[Array->Length - 1], '\0');
+            if (strAppend((string)Array->Values[Array->Length - 1], '\0') == 1)
+            {
+                return 1;
+            }
             arrInsert(Array, Array->Length, strNew());
         }
     }
