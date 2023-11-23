@@ -5,6 +5,10 @@ array arrNew(uint64 Length)
     array Array;
 
     Array = malloc(sizeof(array));
+    if (Array == NULL)
+    {
+        return NULL;
+    }
     Array->Values = calloc(Length, sizeof(void*));
     Array->Length = Length;
 
