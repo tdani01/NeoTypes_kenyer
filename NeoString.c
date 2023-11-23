@@ -176,3 +176,11 @@ boolean strCompare(char* Characters1, char* Characters2)
     }
     return false;
 }
+
+uint16 strPurge(string String)
+{
+    free(String->String);
+    free(String);
+
+    return 0;
+}

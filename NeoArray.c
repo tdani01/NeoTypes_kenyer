@@ -69,3 +69,11 @@ uint16 arrRemove(array Array, uint64 Index)
 
     return 0;
 }
+
+uint16 arrPurge(array Array)
+{
+    free(Array->Values);
+    free(Array);
+
+    return 0;
+}
