@@ -87,7 +87,7 @@ struct listNodeStruct
 list listNew();
 
 uint16 listInsert(list List, uint64 Index, void* Value);
-uint16 listRemove(list List, uint64 Index); //UNCOMPLETED
+uint16 listRemove(list List, uint64 Index);
 
 listNode listGet(list List, uint64 Index);
 uint16 listCache(list List, uint64 CacheCoverage);

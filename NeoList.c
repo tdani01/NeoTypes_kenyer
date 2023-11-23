@@ -1,6 +1,6 @@
 #include "NeoTypes.h"
 
-list listNew() //APPROVED
+list listNew()
 {
     list result;
 
@@ -22,7 +22,7 @@ list listNew() //APPROVED
     return result;
 }
 
-uint16 listInsert(list List, uint64 Index, void* Value) //APPROVED
+uint16 listInsert(list List, uint64 Index, void* Value)
 {
     listNode first;
     listNode last;
@@ -101,7 +101,7 @@ uint16 listInsert(list List, uint64 Index, void* Value) //APPROVED
     return 0;
 }
 
-uint16 listRemove(list List, uint64 Index) //UNCOMPLETED
+uint16 listRemove(list List, uint64 Index)
 {
     listNode first;
     listNode last;
@@ -159,7 +159,7 @@ uint16 listRemove(list List, uint64 Index) //UNCOMPLETED
     return 0;
 }
 
-listNode listGet(list List, uint64 Index) //APPROVED
+listNode listGet(list List, uint64 Index)
 {
     listNode result;
 
@@ -176,7 +176,7 @@ listNode listGet(list List, uint64 Index) //APPROVED
     return result;
 }
 
-uint16 listCache(list List, uint64 CacheCoverage) //APPROVED
+uint16 listCache(list List, uint64 CacheCoverage)
 {
     listNode first;
     listNode last;
@@ -227,7 +227,7 @@ uint16 listCache(list List, uint64 CacheCoverage) //APPROVED
     return 0;
 }
 
-uint16 listPurge(list List) //APPROVED
+uint16 listPurge(list List)
 {
     listNode tmp;
 
