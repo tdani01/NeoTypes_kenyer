@@ -132,10 +132,17 @@ uint16 strSplit(array Array, string String, char Character)
 {
     free(Array->Values);
 
+    string StringTMP;
+
     Array->Values = NULL;
     Array->Length = 0;
 
-    arrInsert(Array, Array->Length, strNew());
+    StringTMP = strNew();
+    if (StringTMP == NULL)
+    {
+        return 1;
+    }
+    arrInsert(Array, Array->Length, StringTMP);
     for (uint64 i = 0; i < String->Lenght - 1; i++)
     {
         if (String->String[i] != Character)
@@ -151,7 +158,12 @@ uint16 strSplit(array Array, string String, char Character)
             {
                 return 1;
             }
-            arrInsert(Array, Array->Length, strNew());
+            StringTMP = strNew();
+            if (StringTMP == NULL)
+            {
+                return 1;
+            }
+            arrInsert(Array, Array->Length, StringTMP);
         }
     }
 

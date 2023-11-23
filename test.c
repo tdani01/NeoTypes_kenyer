@@ -2,33 +2,13 @@
 
 int main()
 {
-    list List = listNew();
-
-    listInsert(List, List->Length, (void*)1);
-    listInsert(List, List->Length, (void*)2);
-    listInsert(List, List->Length, (void*)3);
-
-    for (uint64 i = 0; i < List->Length; i++)
+    string str = strNew();
+    strInit(str, "hello world szia uram hogy vagy ma !");
+    array arr = arrNew(0);
+    strSplit(arr, str, ' ');
+    for (uint64 i = 0; i < arr->Length; i++)
     {
-        printf("%d\n", listGet(List, i)->Value);
-    }
-
-    printf("------\n");
-    listRemove(List, 2);
-
-    for (uint64 i = 0; i < List->Length; i++)
-    {
-        printf("%d\n", listGet(List, i)->Value);
-    }
-
-    printf("------\n");
-
-    listInsert(List, 2, (void*)4);
-    listInsert(List, List->Length, (void*)5);
-    listInsert(List, List->Length, (void*)6);
-    for (uint64 i = 0; i < List->Length; i++)
-    {
-        printf("%d\n", listGet(List, i)->Value);
+        printf("%s\n", ((string)arr->Values[i])->String);
     }
 
 
