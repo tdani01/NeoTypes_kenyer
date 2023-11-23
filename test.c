@@ -4,17 +4,19 @@ int main()
 {
     list List = listNew();
 
-    for (uint64 i = 0; i < 30; i++)
+    for (uint64 i = 0; i < 10000; i++)
     {
         listAppend(List, (void*)i);
     }
 
-    listCache(List, 3);
+    //listCache(List, 3);
 
     for (uint64 i = 0; i < List->Length; i++)
     {
         printf("%d\n", listGet(List, i)->Value);
     }
+
+    printf("Cache: %d\n", List->Cache->Size);
 
     /*for (uint16 i = 0; i < 3; i++)
     {
