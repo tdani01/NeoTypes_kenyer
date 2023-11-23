@@ -72,12 +72,12 @@ uint16 listAppend(list List, void* Value) //APPROVED
     return 0;
 }
 
-uint16 listInsert(list List, uint64 Index, void* Value)
+uint16 listInsert(list List, uint64 Index, void* Value) //UNCOMPLETED
 {
     return 0;
 }
 
-uint16 listRemove(list List, uint64 Index)
+uint16 listRemove(list List, uint64 Index) //UNCOMPLETED
 {
     return 0;
 }

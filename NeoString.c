@@ -1,7 +1,5 @@
 #include "NeoTypes.h"
 
-//TODO strNew() funkciónak a lehetséges NULL visszatéréseinek kezelése
-
 uint64 strLength(char* Characters)
 {
     uint64 length;
