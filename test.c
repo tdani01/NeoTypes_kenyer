@@ -2,21 +2,18 @@
 
 int main()
 {
-    list List = listNew();
+    list List;
 
-    for (uint64 i = 0; i < 30; i++)
+    for (uint64 i = 0; i < 10; i++)
     {
-        listAppend(List, (void*)i);
+        List = listNew();
+        for (uint64 i = 0; i < 100000000; i++)
+        {
+            listAppend(List, (void*)i);
+        }
+        listPurge(List);
+        printf("Round %d done.\n", i + 1);
     }
-
-    listCache(List, 3);
-
-    for (uint64 i = 0; i < List->Length; i++)
-    {
-        printf("%d\n", listGet(List, i)->Value);
-    }
-
-    printf("Cache: %d\n", List->Cache->Size);
 
     /*for (uint16 i = 0; i < 3; i++)
     {

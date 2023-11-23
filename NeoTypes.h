@@ -87,7 +87,7 @@ listNode listGet(list List, uint64 Index);
 uint16 listCache(list List, uint64 CacheCoverage);
 //Insert
 //Remove
-//Purge
+uint16 listPurge(list List);
 
 //_______________NeoConvert.c______________
 

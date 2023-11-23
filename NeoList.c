@@ -115,3 +115,22 @@ uint16 listCache(list List, uint64 CacheCoverage) //APPROVED
 
     return 0;
 }
+
+uint16 listPurge(list List)
+{
+    listNode tmp;
+
+    tmp = List->Cache->Nodes[0];
+    for (listNode i = List->Cache->Nodes[0]->Next; i != NULL; i = i->Next)
+    {
+        free(tmp);
+        tmp = i;
+    }
+    free(tmp);
+
+    free(List->Cache->Nodes);
+    free(List->Cache);
+    free(List);
+
+    return 0;
+}
