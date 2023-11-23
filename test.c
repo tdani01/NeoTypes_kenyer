@@ -8,7 +8,7 @@ int main()
     {
         for (uint64 i = 0; i < 10; i++)
         {
-            listAppend(List, (void*)i);
+            listInsert(List, List->Length, (void*)i);
         }
 
         printf("--------\n");

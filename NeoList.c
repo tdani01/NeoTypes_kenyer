@@ -74,6 +74,64 @@ uint16 listAppend(list List, void* Value) //APPROVED
 
 uint16 listInsert(list List, uint64 Index, void* Value) //UNCOMPLETED
 {
+    listNode first;
+    listNode last;
+
+    if (List->Length == 0)
+    {
+        first = malloc(sizeof(listNode));
+        if (first == NULL)
+        {
+            return 1;
+        }
+        first->Value = Value;
+        first->Next = NULL;
+
+        last = first;
+    }
+    else if (Index == 0)
+    {
+        first = malloc(sizeof(listNode));
+        if (first == NULL)
+        {
+            return 1;
+        }
+        first->Value = Value;
+        first->Next = List->Cache->Nodes[0];
+
+        last = List->Cache->Nodes[List->Cache->Size - 1];
+    }
+    else
+    {
+        first = listGet(List, Index - 1);
+        last = listGet(List, Index - 1)->Next;
+
+        first->Next = malloc(sizeof(listNode));
+        if (first->Next == NULL)
+        {
+            return 1;
+        }
+        first->Next->Value = Value;
+        first->Next->Next = last;
+
+        first = List->Cache->Nodes[0];
+        last = List->Cache->Nodes[List->Cache->Size - 1];
+    }
+
+    List->Length++;
+
+    free(List->Cache->Nodes);
+    List->Cache->Nodes = malloc(sizeof(listNode) * 2);
+    if (List->Cache->Nodes == NULL)
+    {
+        return 1;
+    }
+    List->Cache->Nodes[0] = first;
+    List->Cache->Nodes[1] = last;
+
+    List->Cache->Size = 2;
+    List->Cache->Coverage = List->Length;
+
     return 0;
 }
 
