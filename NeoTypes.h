@@ -86,8 +86,7 @@ struct listNodeStruct
 
 list listNew();
 
-uint16 listAppend(list List, void* Value);
-uint16 listInsert(list List, uint64 Index, void* Value); //UNCOMPLETED
+uint16 listInsert(list List, uint64 Index, void* Value);
 uint16 listRemove(list List, uint64 Index); //UNCOMPLETED
 
 listNode listGet(list List, uint64 Index);

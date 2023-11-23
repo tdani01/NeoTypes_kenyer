@@ -22,56 +22,6 @@ list listNew() //APPROVED
     return result;
 }
 
-uint16 listAppend(list List, void* Value) //APPROVED
-{
-    listNode first;
-    listNode last;
-
-    if (List->Length == 0)
-    {
-        first = malloc(sizeof(listNode));
-        if (first == NULL)
-        {
-            return 1;
-        }
-        first->Value = Value;
-        first->Next = NULL;
-
-        last = first;
-    }
-    else
-    {
-        List->Cache->Nodes[List->Cache->Size - 1]->Next = malloc(sizeof(listNode));
-        if (List->Cache->Nodes[List->Cache->Size - 1]->Next == NULL)
-        {
-            return 1;
-        }
-        List->Cache->Nodes[List->Cache->Size - 1]->Next->Value = Value;
-        List->Cache->Nodes[List->Cache->Size - 1]->Next->Next = NULL;
-
-        List->Cache->Nodes[List->Cache->Size - 1] = List->Cache->Nodes[List->Cache->Size - 1]->Next;
-
-        first = List->Cache->Nodes[0];
-        last = List->Cache->Nodes[List->Cache->Size - 1];
-    }
-
-    List->Length++;
-
-    free(List->Cache->Nodes);
-    List->Cache->Nodes = malloc(sizeof(listNode) * 2);
-    if (List->Cache->Nodes == NULL)
-    {
-        return 1;
-    }
-    List->Cache->Nodes[0] = first;
-    List->Cache->Nodes[1] = last;
-
-    List->Cache->Size = 2;
-    List->Cache->Coverage = List->Length;
-
-    return 0;
-}
-
 uint16 listInsert(list List, uint64 Index, void* Value) //UNCOMPLETED
 {
     listNode first;
