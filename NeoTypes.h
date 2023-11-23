@@ -35,7 +35,6 @@ array arrNew(uint64 Length);
 uint16 arrInit(array Array, uint64 Length, void* Values, ...);
 
 uint16 arrInsert(array Array, uint64 Index, void* Value);
-
 uint16 arrRemove(array Array, uint64 Index);
 
 uint16 arrPurge(array Array);
@@ -92,8 +91,8 @@ uint16 listInsert(list List, uint64 Index, void* Value); //UNCOMPLETED
 uint16 listRemove(list List, uint64 Index); //UNCOMPLETED
 
 listNode listGet(list List, uint64 Index);
-
 uint16 listCache(list List, uint64 CacheCoverage);
+
 uint16 listPurge(list List);
 
 //_______________NeoConvert.c______________ //HANDLE STRNEW() ERRORS
