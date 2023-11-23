@@ -82,11 +82,14 @@ struct listNodeStruct
 
 
 list listNew();
+
 uint16 listAppend(list List, void* Value);
+uint16 listInsert(list List, uint64 Index, void* Value);
+uint16 listRemove(list List, uint64 Index);
+
 listNode listGet(list List, uint64 Index);
+
 uint16 listCache(list List, uint64 CacheCoverage);
-//Insert
-//Remove
 uint16 listPurge(list List);
 
 //_______________NeoConvert.c______________

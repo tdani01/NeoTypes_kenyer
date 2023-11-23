@@ -52,6 +52,16 @@ uint16 listAppend(list List, void* Value) //APPROVED
     return 0;
 }
 
+uint16 listInsert(list List, uint64 Index, void* Value)
+{
+    return 0;
+}
+
+uint16 listRemove(list List, uint64 Index)
+{
+    return 0;
+}
+
 listNode listGet(list List, uint64 Index) //APPROVED
 {
     listNode result;
@@ -116,7 +126,7 @@ uint16 listCache(list List, uint64 CacheCoverage) //APPROVED
     return 0;
 }
 
-uint16 listPurge(list List)
+uint16 listPurge(list List) //APPROVED
 {
     listNode tmp;
 
