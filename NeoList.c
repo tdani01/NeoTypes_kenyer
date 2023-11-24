@@ -76,6 +76,7 @@ uint16 listInsert(list List, uint64 Index, void* Value)
         first->Next = malloc(sizeof(listNode));
         if (first->Next == NULL)
         {
+            first->Next = last;
             return 1;
         }
         first->Next->Value = Value;
@@ -91,6 +92,9 @@ uint16 listInsert(list List, uint64 Index, void* Value)
     List->Cache->Nodes = malloc(sizeof(listNode) * 2);
     if (List->Cache->Nodes == NULL)
     {
+        List->Cache->Size = 0;
+        List->Cache->Coverage = 0;
+        List->Length = 0;
         return 1;
     }
     List->Cache->Nodes[0] = first;
