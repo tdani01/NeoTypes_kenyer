@@ -257,7 +257,6 @@ uint16 listPurge(list List)
     free(List->Cache->Nodes);
     free(List->Cache);
     free(List);
-    List = NULL;
 
     return 0;
 }
