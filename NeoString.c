@@ -22,7 +22,7 @@ string strNew()
     {
         return NULL;
     }
-    String->String = malloc(sizeof(char));
+    String->String = malloc(sizeof(char) * 1);
     if (String->String == NULL)
     {
         free(String);
