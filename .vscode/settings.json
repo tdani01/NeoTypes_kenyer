@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "cmath": "c",
-        "neotypes.h": "c",
-        "chrono": "c",
-        "span": "c",
-        "type_traits": "c"
-    }
-}
