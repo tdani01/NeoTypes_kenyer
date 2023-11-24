@@ -220,6 +220,9 @@ uint16 listCache(list List, uint64 CacheCoverage)
     List->Cache->Nodes = malloc(sizeof(listNode) * List->Cache->Size);
     if (List->Cache->Nodes == NULL)
     {
+        List->Cache->Size = 0;
+        List->Cache->Coverage = 0;
+        List->Length = 0;
         return 1;
     }
     List->Cache->Nodes[0] = first;
