@@ -70,8 +70,13 @@ uint16 arrRemove(array Array, uint64 Index)
         Array->Values[i] = Array->Values[i + 1];
     }
 
-    Array->Values = realloc(Array->Values, sizeof(void*) * (Array->Length - 1));
     Array->Length--;
+    Array->Values = realloc(Array->Values, sizeof(void*) * Array->Length);
+    if (Array->Length != 0 && Array->Values == NULL)
+    {
+        Array->Length = 0;
+        return 1;
+    }
 
     return 0;
 }
