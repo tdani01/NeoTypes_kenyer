@@ -157,6 +157,9 @@ uint16 listRemove(list List, uint64 Index)
     List->Cache->Nodes = malloc(sizeof(listNode) * 2);
     if (List->Cache->Nodes == NULL)
     {
+        List->Cache->Size = 0;
+        List->Cache->Coverage = 0;
+        List->Length = 0;
         return 1;
     }
     List->Cache->Nodes[0] = first;
