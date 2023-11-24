@@ -20,7 +20,7 @@ typedef signed long sint64;
 //________________NeoCast.c________________// COMPLETED
 
 uint64 asInt(double Value);
-double asDouble(sint64 Value);
+double asDouble(uint64 Value);
 
 //________________NeoArray.c_______________// COMPLETED
 
@@ -94,13 +94,13 @@ uint16 listCache(list List, uint64 CacheCoverage);
 
 uint16 listPurge(list List);
 
-//_______________NeoConvert.c______________ // BROKEN
+//_______________NeoConvert.c______________ // COMPLETED
 
 uint64 STRtoUINT(char* Characters, boolean* Success);
-uint16 UINTtoSTR(uint64 Number, string String); //BROKEN
+uint16 UINTtoSTR(uint64 Number, string String);
 
 sint64 STRtoSINT(char* Characters, boolean* Success);
-uint16 SINTtoSTR(sint64 Number, string String); //BROKEN
+uint16 SINTtoSTR(sint64 Number, string String);
 
 double STRtoDOUBLE(char* Characters, boolean* Success);
-uint16 DOUBLEtoSTR(double Number, string String); //BROKEN
+uint16 DOUBLEtoSTR(double Number, string String);
