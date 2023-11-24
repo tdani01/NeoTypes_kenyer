@@ -85,7 +85,6 @@ uint16 arrPurge(array Array)
 {
     free(Array->Values);
     free(Array);
-    Array = NULL;
 
     return 0;
 }
