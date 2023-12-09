@@ -2,7 +2,7 @@
 
 #undef main
 
-uint16 main(uint64 argc, char* *argv)
+uint8 main(uint8 argc, char* *argv)
 {
     string str;
 
