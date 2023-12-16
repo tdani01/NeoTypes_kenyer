@@ -17,54 +17,54 @@ string strNew()
 {
     string String;
 
-    String = malloc(sizeof(string));
+    String = (string)malloc(sizeof(string));
     if (String == NULL)
     {
         return NULL;
     }
-    String->String = malloc(sizeof(char) * 1);
+    String->String = (char*)malloc(sizeof(char) * 1);
     if (String->String == NULL)
     {
         free(String);
         return NULL;
     }
     String->String[0] = '\0';
-    String->Lenght = 1;
+    String->Length = 1;
 
     return String;
 }
 
 uint8 strInit(string String, char* Characters)
 {   
-    String->Lenght = strLength(Characters);
+    String->Length = strLength(Characters);
     free(String->String);
-    String->String = malloc(sizeof(char) * String->Lenght);
+    String->String = (char*)malloc(sizeof(char) * String->Length);
     if (String->String == NULL)
     {
-        String->Lenght = 0;
+        String->Length = 0;
         return 1;
     }
 
-    for (uint64 i = 0; i < String->Lenght; i++)
+    for (uint64 i = 0; i < String->Length; i++)
     {
         String->String[i] = Characters[i];
     }
-    String->String[String->Lenght - 1] = '\0';
+    String->String[String->Length - 1] = '\0';
 
     return 0;
 }
 
 uint8 strAppend(string String, char Character)
 {
-    String->String = realloc(String->String, String->Lenght + 1);
+    String->String = (char*)realloc(String->String, String->Length + 1);
     if (String->String == NULL)
     {
-        String->Lenght = 0;
+        String->Length = 0;
         return 1;
     }
-    String->String[String->Lenght - 1] = Character;
-    String->String[String->Lenght] = '\0';
-    String->Lenght++;
+    String->String[String->Length - 1] = Character;
+    String->String[String->Length] = '\0';
+    String->Length++;
 
     return 0;
 }
@@ -87,7 +87,7 @@ uint8 strConcat(string String, uint64 Count, char* Characters, ...)
     StringLengthTMP++;
     va_end(CharactersArgs);
 
-    StringTMP = malloc(sizeof(char) * StringLengthTMP);
+    StringTMP = (char*)malloc(sizeof(char) * StringLengthTMP);
     if (StringTMP == NULL)
     {
         return 1;
@@ -112,7 +112,7 @@ uint8 strConcat(string String, uint64 Count, char* Characters, ...)
 
     free(String->String);
     String->String = StringTMP;
-    String->Lenght = StringLengthTMP;
+    String->Length = StringLengthTMP;
 
     return 0;
 }
@@ -154,14 +154,14 @@ uint8 strSplit(array Array, char* Characters, char Character)
     {
         if (Characters[i] != Character)
         {
-            if (strAppend(result->Values[result->Length - 1], Characters[i]) == 1)
+            if (strAppend((string)result->Values[result->Length - 1], Characters[i]) == 1)
             {
                 return 1;
             }
         }
         else
         {
-            if (strAppend(result->Values[result->Length - 1], '\0') == 1)
+            if (strAppend((string)result->Values[result->Length - 1], '\0') == 1)
             {
                 return 1;
             }
@@ -203,6 +203,11 @@ logic strCompare(char* Characters1, char* Characters2)
 
 uint8 strPurge(string String)
 {
+    if (String == NULL)
+    {
+        return 0;
+    }
+
     free(String->String);
     free(String);
 
