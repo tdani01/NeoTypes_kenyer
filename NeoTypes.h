@@ -122,6 +122,7 @@ logic strCompare(char* Characters1, char* Characters2);
 /*Deallocates a string from the memory.
 Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.*/
 uint8 strPurge(string String);
+uint8 strPurgeKeepString(string String, char** Characters);
 
 //_____________________________________________NeoList.c_____________________________________________ // COMPLETED
 
