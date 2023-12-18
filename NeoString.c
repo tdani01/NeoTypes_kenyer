@@ -217,7 +217,7 @@ uint8 strPurge(string String)
 uint8 strPurgeKeepString(string String, char** Characters)
 {
     *Characters = String->String;
-    strPurge(String);
+    free(String);
 
     return 0;
 }
