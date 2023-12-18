@@ -213,3 +213,24 @@ uint8 strPurge(string String)
 
     return 0;
 }
+
+
+uint8 strBulkPurge(uint64 Count, string String, ...)
+{
+    va_list StringArgs;
+    va_start(StringArgs, String);
+
+    free(String);
+    for (uint64 i = 1; i < Count; i++)
+    {
+        string StringTMP = va_arg(StringArgs, string);
+        if (StringTMP == NULL)
+        {
+            continue;
+        }
+        free(StringTMP->String);
+        free(StringTMP);
+    }
+    va_end(StringArgs);
+    return 0;
+}
