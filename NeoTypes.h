@@ -162,7 +162,7 @@ Warning: calling this function on an initialized list can cause memory leaks, be
 Important: you must always initialize a list with this function before use.*/
 list listNew();
 
-/*Inserts a new element into a list
+/*Inserts a new element into a list.
 To add a new element to the end of a list you must use List->Length as index.
 Returns 0 on success and 1 on error.
 Warning: if fails the insertion will be cancelled and the list remains intact.
@@ -176,7 +176,7 @@ Note: always resets the cache.*/
 uint8 listRemove(list List, uint64 Index);
 
 /*Returns the indexed node from a list.
-You can get or set the value of the node with: Node->Value*/
+You can get or set the value of the node with: Node->Value.*/
 listNode listGet(list List, uint64 Index);
 /*Generates cache for a list.
 Cacheing is recommended when a list is long enough to slow down the program.
