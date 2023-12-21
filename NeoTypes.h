@@ -38,14 +38,14 @@ typedef signed int sint32;
 typedef unsigned long uint64;
 typedef signed long sint64;
 
-//_____________________________________________NeoCast.c_____________________________________________// COMPLETED
+//_____________________________________________NeoCast.c_____________________________________________//
 
 /*Process a binary value stored in a double as an integer.*/
 uint64 asInt(double Value);
 /*Process a binary value stored in an integer as a double.*/
 double asDouble(uint64 Value);
 
-//_____________________________________________NeoArray.c____________________________________________// COMPLETED
+//_____________________________________________NeoArray.c____________________________________________//
 
 struct arrayStruct
 {
@@ -82,7 +82,7 @@ Important: if the elements of the array were pointers allocated with a malloc(),
 Note: it's recommended to set the Array's value to NULL after calling this function, it's safe to pass a NULL value to this function.*/
 uint8 arrPurge(array Array);
 
-//____________________________________________NeoString.c____________________________________________// COMPLETED
+//____________________________________________NeoString.c____________________________________________//
 
 struct stringStruct
 {
@@ -115,16 +115,29 @@ Important: the number of the strings will be concatenated must be accurate.
 Note: deallocating the target string is not needed, if fails every string will remain intact.*/
 uint8 strConcat(string String, uint64 Count, char* Characters, ...);
 
+/*Reads the contents of standard input until '\n' and stores it in a string.
+Returns 0 on success and 1 on error.
+Warning: if fails the String->String will be NULL and the String->Length will be 0.
+Important: failures can lead to memory leaks.*/
 uint8 strRead(string String);
+/*Splits a string into an array of strings by the given character.
+You can access a particular string from the array: ((string)Array->Values[index])->String.
+Returns 0 on success and 1 on error.
+Warning: if fails the result array may be broken and must be fixed manually using arrPurge() and arrNew().
+Important: failures can lead to memory leaks.*/
 uint8 strSplit(array Array, char* Characters, char Character);
+/*Compares two strings character by character and returns true if they are equal.*/
 logic strCompare(char* Characters1, char* Characters2);
 
 /*Deallocates a string from the memory.
 Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.*/
 uint8 strPurge(string String);
+/*Deallocates a string from the memory, but keeps the char* of the purged string.
+Example use case: if you want to return only a char* from a function, but not the string itself.
+Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.*/
 uint8 strPurgeKeepString(string String, char** Characters);
 
-//_____________________________________________NeoList.c_____________________________________________ // COMPLETED
+//_____________________________________________NeoList.c_____________________________________________//
 
 struct listStruct
 {
@@ -179,7 +192,7 @@ Important: if the elements of the list were pointers allocated with a malloc(), 
 Note: it's recommended to set the List's value to NULL after calling this function, it's safe to pass a NULL value to this function.*/
 uint8 listPurge(list List);
 
-//____________________________________________NeoConvert.c___________________________________________ // COMPLETED
+//____________________________________________NeoConvert.c___________________________________________//
 
 /*Converts a string to an unsigned integer.
 You can check the success of the conversion by passing a logic variable
@@ -211,7 +224,7 @@ The string will be deallocated and reinitialized, if the reinitialization fails 
 Returns 0 on success and 1 on error.*/
 uint8 DOUBLEtoSTR(double Number, string String);
 
-//_____________________________________________NeoFile.c_____________________________________________ // COMPLETED
+//_____________________________________________NeoFile.c_____________________________________________//
 
 /*Reads a text file and puts its lines into an array of strings.
 Returns true on success and false on error.
