@@ -1,2 +1,2 @@
-#NeoTypes
+# NeoTypes
 A type library for C that contains: new variable names, bool, dynamic array, string, list, conversion between numeric and string types, casts between integer and floating point types. And a little file management too.
