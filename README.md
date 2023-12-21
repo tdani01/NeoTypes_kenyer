@@ -17,7 +17,7 @@ Process a binary value stored in an integer as a double.
 Creates a new array with the given length.\
 Returns the address of the array or NULL if fails.\
 Warning: calling this function on an initialized array can cause memory leaks, before calling this function second time you must use arrPurge().\
-Important: you must always initialize an array with this function before use.\
+Important: you must always initialize an array with this function before use.
 
 ### uint8 arrInit(array Array, uint64 Length, void* Values, ...)
 Clears the elements of the given array and initializes it with the new ones.\
