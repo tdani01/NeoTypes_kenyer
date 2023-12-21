@@ -137,3 +137,51 @@ Important: failures can lead to memory leaks.
 Deallocates a list from the memory with all of its elements.\
 Important: if the elements of the list were pointers allocated with a malloc(), calloc() or realloc() it's recommended to first call free() on those pointers to avoid memory leaks.\
 Note: it's recommended to set the List's value to NULL after calling this function, it's safe to pass a NULL value to this function.
+
+## NeoConvert.c
+
+### uint64 STRtoUINT(char* Characters, logic* Success)
+Converts a string to an unsigned integer.\
+You can check the success of the conversion by passing a logic variable
+by reference, it's safe to pass NULL if error handling is not needed.\
+If it fails it will return a 0 as result.\
+
+### uint8 UINTtoSTR(uint64 Number, string String)
+Converts an unsigned integer to a string.\
+The string will be deallocated and reinitialized, if the reinitialization fails the String->String will be NULL and the String->Length will be 0.\
+Returns 0 on success and 1 on error.
+
+### sint64 STRtoSINT(char* Characters, logic* Success)
+Converts a string to a signed integer.\
+You can check the success of the conversion by passing a logic variable
+by reference, it's safe to pass NULL if error handling is not needed.\
+If it fails it will return a 0 as result.
+
+### uint8 SINTtoSTR(sint64 Number, string String)
+Converts a signed integer to a string.\
+The string will be deallocated and reinitialized, if the reinitialization fails the String->String will be NULL and the String->Length will be 0.\
+Returns 0 on success and 1 on error.
+
+### double STRtoDOUBLE(char* Characters, logic* Success)
+Converts a string to a double.\
+You can check the success of the conversion by passing a logic variable
+by reference, it's safe to pass NULL if error handling is not needed.\
+If it fails it will return a 0 as result.
+
+### uint8 DOUBLEtoSTR(double Number, string String)
+Converts a double to a string.\
+The string will be deallocated and reinitialized, if the reinitialization fails the String->String will be NULL and the String->Length will be 0.\
+Returns 0 on success and 1 on error.
+
+## NeoFile.c
+
+### logic fileRead(char* FilePath, array Lines)
+Reads a text file and puts its lines into an array of strings.\
+Returns true on success and false on error.\
+Important: failures can lead to memory leaks.\
+Note: this function will not clear the values of the passed array, instead it will insert every line as a new string to the end of the array.
+
+### logic fileWrite(array Lines, char* FilePath)
+Writes the content of an array of strings line by line into a text file.\
+Returns true on success and false on error.\
+Note: every element of the passed array needs to a be a string.
