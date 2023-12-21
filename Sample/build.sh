@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
-gcc -o bin *.c NeoTypes/*.c -lm && ./bin
+gcc -o bin *.c -LNeoTypes -lNeoTypes && ./bin
