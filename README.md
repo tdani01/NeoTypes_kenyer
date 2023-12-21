@@ -144,7 +144,7 @@ Note: it's recommended to set the List's value to NULL after calling this functi
 Converts a string to an unsigned integer.\
 You can check the success of the conversion by passing a logic variable
 by reference, it's safe to pass NULL if error handling is not needed.\
-If it fails it will return a 0 as result.\
+If it fails it will return a 0 as result.
 
 ### uint8 UINTtoSTR(uint64 Number, string String)
 Converts an unsigned integer to a string.\
