@@ -1,3 +1,3 @@
 #!/bin/sh
 
-gcc -c *.c && ar rcs libNeoTypes.a *.o && rm *.o
+gcc -c *.c -m64 && ar rcs libNeoTypes.a *.o && rm *.o
