@@ -1,15 +1,19 @@
 #include "NeoTypes.h"
 
+#define LIST_SIZE (sizeof(void*) + sizeof(uint64))
+#define LIST_CACHE_T_SIZE (sizeof(void*) + sizeof(uint64) * 2)
+#define LIST_NODE_SIZE (sizeof(void*) * 2)
+
 list listNew()
 {
     list result;
 
-    result = (list)malloc(sizeof(list));
+    result = (list)malloc(LIST_SIZE);
     if (result == NULL)
     {
         return NULL;
     }
-    result->Cache = (listCache_t)malloc(sizeof(listCache_t));
+    result->Cache = (listCache_t)malloc(LIST_CACHE_T_SIZE);
     if (result->Cache == NULL)
     {
         free(result);
@@ -32,7 +36,7 @@ uint8 listInsert(list List, uint64 Index, void* Value)
     {
         if (List->Length == 0)
         {
-            first = (listNode)malloc(sizeof(listNode));
+            first = (listNode)malloc(LIST_NODE_SIZE);
             if (first == NULL)
             {
                 return 1;
@@ -44,7 +48,7 @@ uint8 listInsert(list List, uint64 Index, void* Value)
         }
         else
         {
-            first = (listNode)malloc(sizeof(listNode));
+            first = (listNode)malloc(LIST_NODE_SIZE);
             if (first == NULL)
             {
                 return 1;
@@ -57,7 +61,7 @@ uint8 listInsert(list List, uint64 Index, void* Value)
     }
     else if (Index == List->Length)
     {
-        List->Cache->Nodes[List->Cache->Size - 1]->Next = (listNode)malloc(sizeof(listNode));
+        List->Cache->Nodes[List->Cache->Size - 1]->Next = (listNode)malloc(LIST_NODE_SIZE);
         if (List->Cache->Nodes[List->Cache->Size - 1]->Next == NULL)
         {
             return 1;
@@ -73,7 +77,7 @@ uint8 listInsert(list List, uint64 Index, void* Value)
         first = listGet(List, Index - 1);
         last = first->Next;
 
-        first->Next = (listNode)malloc(sizeof(listNode));
+        first->Next = (listNode)malloc(LIST_NODE_SIZE);
         if (first->Next == NULL)
         {
             first->Next = last;
@@ -89,7 +93,7 @@ uint8 listInsert(list List, uint64 Index, void* Value)
     List->Length++;
 
     free(List->Cache->Nodes);
-    List->Cache->Nodes = (listNode*)malloc(sizeof(listNode) * 2);
+    List->Cache->Nodes = (listNode*)malloc(LIST_NODE_SIZE * 2);
     if (List->Cache->Nodes == NULL)
     {
         List->Cache->Size = 0;
@@ -154,7 +158,7 @@ uint8 listRemove(list List, uint64 Index)
     List->Length--;
 
     free(List->Cache->Nodes);
-    List->Cache->Nodes = (listNode*)malloc(sizeof(listNode) * 2);
+    List->Cache->Nodes = (listNode*)malloc(LIST_NODE_SIZE * 2);
     if (List->Cache->Nodes == NULL)
     {
         List->Cache->Size = 0;
@@ -217,7 +221,7 @@ uint8 listCache(list List, uint64 CacheCoverage)
 
     //Initialize the cache
     free(List->Cache->Nodes);
-    List->Cache->Nodes = (listNode*)malloc(sizeof(listNode) * List->Cache->Size);
+    List->Cache->Nodes = (listNode*)malloc(LIST_NODE_SIZE * List->Cache->Size);
     if (List->Cache->Nodes == NULL)
     {
         List->Cache->Size = 0;

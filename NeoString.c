@@ -1,5 +1,7 @@
 #include "NeoTypes.h"
 
+#define STRING_SIZE (sizeof(void*) + sizeof(uint64))
+
 uint64 strLength(char* Characters)
 {
     uint64 length;
@@ -17,7 +19,7 @@ string strNew()
 {
     string String;
 
-    String = (string)malloc(sizeof(string));
+    String = (string)malloc(STRING_SIZE);
     if (String == NULL)
     {
         return NULL;
@@ -56,7 +58,7 @@ uint8 strInit(string String, char* Characters)
 
 uint8 strAppend(string String, char Character)
 {
-    String->String = (char*)realloc(String->String, String->Length + 1);
+    String->String = (char*)realloc(String->String, sizeof(char) * (String->Length + 1));
     if (String->String == NULL)
     {
         String->Length = 0;
