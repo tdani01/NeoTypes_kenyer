@@ -5,10 +5,13 @@ A type library for C that contains: new variable names, bool, dynamic array, str
 
 ## NeoCast.c
 
-### uint64 asInt(double Value)
-Process a binary value stored in a double as an integer.
+### uint64 asUINT(double Value)
+Process a binary value stored in a double as an unsigned integer.
 
-### double asDouble(uint64 Value)
+### uint64 asSINT(double Value)
+Process a binary value stored in a double as a signed integer.
+
+### double asDOUBLE(uint64 Value)
 Process a binary value stored in an integer as a double.
 
 ## NeoArray.c
