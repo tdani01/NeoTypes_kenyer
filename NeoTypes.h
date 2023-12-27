@@ -233,3 +233,9 @@ logic fileRead(char* FilePath, array Lines);
 Returns true on success and false on error.
 Note: every element of the passed array needs to a be a string.*/
 logic fileWrite(array Lines, char* FilePath);
+
+//____________________________________________NeoMemory.c____________________________________________//
+
+/*Copies a block of memory.
+Returns the address of the copied memory or NULL if the source is NULL or fails.*/
+void* memCopy(void* Source, uint64 Size);

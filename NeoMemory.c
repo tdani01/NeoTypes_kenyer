@@ -1,6 +1,6 @@
 #include "NeoTypes.h"
 
-void* neoCopy(void* Source, uint64 Size)
+void* memCopy(void* Source, uint64 Size)
 {
     void* result;
 
@@ -14,7 +14,7 @@ void* neoCopy(void* Source, uint64 Size)
     {
         return NULL;
     }
-    
+
     for (uint64 i = 0; i < Size; i++)
     {
         ((char*)result)[i] = ((char*)Source)[i];

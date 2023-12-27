@@ -96,11 +96,6 @@ Compares two strings character by character and returns true if they are equal.
 Deallocates a string from the memory.\
 Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.
 
-### uint8 strPurgeKeepString(string String, char** Characters)
-Deallocates a string from the memory, but keeps the char* of the purged string.\
-Example use case: if you want to return only a char* from a function, but not the string itself.\
-Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.
-
 ## NeoList.c
 
 ### list listNew()
@@ -188,3 +183,9 @@ Note: this function will not clear the values of the passed array, instead it wi
 Writes the content of an array of strings line by line into a text file.\
 Returns true on success and false on error.\
 Note: every element of the passed array needs to a be a string.
+
+## NeoMemory.c
+
+### void* memCopy(void* Source, uint64 Size)
+Copies a block of memory.\
+Returns the address of the copied memory or NULL if the source is NULL or fails.
