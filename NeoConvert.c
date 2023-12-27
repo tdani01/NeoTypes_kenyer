@@ -43,7 +43,10 @@ uint8 UINTtoSTR(uint64 Number, string String)
     for (i = 1; Number / i > 10; i *= 10);
     for (; i > 0; i /= 10)
     {
-        strAppend(String, Number / i + '0');
+        if (strAppend(String, Number / i + '0') != 0)
+        {
+            return 1;
+        }
         Number %= i;
     }
 
@@ -112,13 +115,19 @@ uint8 SINTtoSTR(sint64 Number, string String)
     if (Number < 0)
     {
         Number *= -1;
-        strAppend(String, '-');
+        if (strAppend(String, '-') != 0)
+        {
+            return 1;
+        }
     }
 
     for (i = 1; Number / i > 10; i *= 10);
     for (; i > 0; i /= 10)
     {
-        strAppend(String, Number / i + '0');
+        if (strAppend(String, Number / i + '0') != 0)
+        {
+            return 1;
+        }
         Number %= i;
     }
 
@@ -212,7 +221,10 @@ uint8 DOUBLEtoSTR(double Number, string String)
     if (Number < 0)
     {
         Number *= -1;
-        strAppend(String, '-');
+        if (strAppend(String, '-') != 0)
+        {
+            return 1;
+        }
     }
 
     whole = (uint64)trunc(Number);
@@ -221,19 +233,28 @@ uint8 DOUBLEtoSTR(double Number, string String)
     for (i = 1; whole / i > 10; i *= 10);
     for (; i > 0; i /= 10)
     {
-        strAppend(String, whole / i + '0');
+        if (strAppend(String, whole / i + '0') != 0)
+        {
+            return 1;
+        }
         whole %= i;
     }
     if (fraction > 0)
     {
-        strAppend(String, '.');
+        if (strAppend(String, '.') != 0)
+        {
+            return 1;
+        }
 
         for (; fraction - trunc(fraction) > 0; fraction *= 10);
 
         for (i = 1; (uint64)round(fraction) / i > 10; i *= 10);
         for (; i > 0; i /= 10)
         {
-            strAppend(String, (uint64)round(fraction) / i + '0');
+            if (strAppend(String, (uint64)round(fraction) / i + '0') != 0)
+            {
+                return 1;
+            }
             fraction = (uint64)round(fraction) % i;
         }
     }

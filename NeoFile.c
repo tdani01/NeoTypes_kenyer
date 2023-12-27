@@ -24,7 +24,7 @@ logic fileRead(char* FilePath, array Lines)
 
         if (character != '\n')
         {
-            if (strAppend(line, character) == false)
+            if (strAppend(line, character) != 0)
             {
                 strPurge(line);
                 fclose(file);
@@ -33,7 +33,7 @@ logic fileRead(char* FilePath, array Lines)
         }
         else
         {
-            if (arrInsert(Lines, Lines->Length, line) == 1)
+            if (arrInsert(Lines, Lines->Length, line) != 0)
             {
                 strPurge(line);
                 fclose(file);
