@@ -40,10 +40,12 @@ typedef signed long long sint64;
 
 //_____________________________________________NeoCast.c_____________________________________________//
 
-/*Process a binary value stored in a double as an integer.*/
-uint64 asInt(double Value);
+/*Process a binary value stored in a double as an unsigned integer.*/
+uint64 asUINT(double Value);
+/*Process a binary value stored in a double as a signed integer.*/
+sint64 asSINT(double Value);
 /*Process a binary value stored in an integer as a double.*/
-double asDouble(uint64 Value);
+double asDOUBLE(uint64 Value);
 
 //_____________________________________________NeoArray.c____________________________________________//
 

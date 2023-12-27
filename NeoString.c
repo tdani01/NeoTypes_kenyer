@@ -6,13 +6,18 @@ uint64 strLength(char* Characters)
 {
     uint64 length;
 
-    length = 0;
+    if (Characters == NULL)
+    {
+        return 0;
+    }
+
+    length = 1;
     while (Characters[length] != '\0')
     {
         length++;
     }
 
-    return length + 1;
+    return length;
 }
 
 string strNew()
@@ -125,7 +130,7 @@ uint8 strRead(string String)
 
     while ((Character = getchar()) != '\n')
     {
-        if (strAppend(String, Character) == 1)
+        if (strAppend(String, Character) != 0)
         {
             return 1;
         }
@@ -151,19 +156,23 @@ uint8 strSplit(array Array, char* Characters, char Character)
     {
         return 1;
     }
-    arrInsert(result, result->Length, StringTMP);
+    if (arrInsert(result, result->Length, StringTMP) != 0)
+    {
+        return 1;
+    }
+
     for (uint64 i = 0; i < strLength(Characters) - 1; i++)
     {
         if (Characters[i] != Character)
         {
-            if (strAppend((string)result->Values[result->Length - 1], Characters[i]) == 1)
+            if (strAppend((string)result->Values[result->Length - 1], Characters[i]) != 0)
             {
                 return 1;
             }
         }
         else
         {
-            if (strAppend((string)result->Values[result->Length - 1], '\0') == 1)
+            if (strAppend((string)result->Values[result->Length - 1], '\0') != 0)
             {
                 return 1;
             }
@@ -172,7 +181,10 @@ uint8 strSplit(array Array, char* Characters, char Character)
             {
                 return 1;
             }
-            arrInsert(result, result->Length, StringTMP);
+            if (arrInsert(result, result->Length, StringTMP) != 0)
+            {
+                return 1;
+            }
         }
     }
 
