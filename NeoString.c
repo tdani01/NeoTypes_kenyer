@@ -11,13 +11,13 @@ uint64 strLength(char* Characters)
         return 0;
     }
 
-    length = 1;
+    length = 0;
     while (Characters[length] != '\0')
     {
         length++;
     }
 
-    return length;
+    return length + 1;
 }
 
 string strNew()
