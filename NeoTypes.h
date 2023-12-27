@@ -134,10 +134,6 @@ logic strCompare(char* Characters1, char* Characters2);
 /*Deallocates a string from the memory.
 Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.*/
 uint8 strPurge(string String);
-/*Deallocates a string from the memory, but keeps the char* of the purged string.
-Example use case: if you want to return only a char* from a function, but not the string itself.
-Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.*/
-uint8 strPurgeKeepString(string String, char** Characters);
 
 //_____________________________________________NeoList.c_____________________________________________//
 

@@ -227,11 +227,3 @@ uint8 strPurge(string String)
 
     return 0;
 }
-
-uint8 strPurgeKeepString(string String, char** Characters)
-{
-    *Characters = String->String;
-    free(String);
-
-    return 0;
-}
