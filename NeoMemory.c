@@ -10,6 +10,11 @@ void* neoCopy(void* Source, uint64 Size)
     }
 
     result = malloc(Size);
+    if (result == NULL)
+    {
+        return NULL;
+    }
+    
     for (uint64 i = 0; i < Size; i++)
     {
         ((char*)result)[i] = ((char*)Source)[i];
