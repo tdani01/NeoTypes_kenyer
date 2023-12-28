@@ -17,7 +17,7 @@ void* memCopy(void* Source, uint64 Size)
 
     for (uint64 i = 0; i < Size; i++)
     {
-        ((char*)result)[i] = ((char*)Source)[i];
+        ((uint8*)result)[i] = ((uint8*)Source)[i];
     }
 
     return result;
