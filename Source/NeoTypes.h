@@ -239,3 +239,5 @@ logic fileWrite(array Lines, char* FilePath);
 /*Copies a block of memory.
 Returns the address of the copied memory or NULL if the source is NULL or fails.*/
 void* memCopy(void* Source, uint64 Size);
+void* memLoad(char* FilePath, uint64 Size);
+logic memSave(void* Area, uint64 Size, char* FilePath);
