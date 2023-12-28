@@ -1,6 +1,6 @@
 #include "NeoTypes.h"
 
-logic fileRead(char* FilePath, array Lines)
+uint8 fileRead(char* FilePath, array Lines)
 {
     FILE* file;
     string line;
@@ -9,14 +9,14 @@ logic fileRead(char* FilePath, array Lines)
     file = fopen(FilePath, "r");
     if (file == NULL)
     {
-        return false;
+        return 1;
     }
 
     line = strNew();
     if (line == NULL)
     {
         fclose(file);
-        return false;
+        return 1;
     }
     while (!feof(file))
     {
@@ -28,7 +28,7 @@ logic fileRead(char* FilePath, array Lines)
             {
                 strPurge(line);
                 fclose(file);
-                return false;
+                return 1;
             }
         }
         else
@@ -37,31 +37,31 @@ logic fileRead(char* FilePath, array Lines)
             {
                 strPurge(line);
                 fclose(file);
-                return false;
+                return 1;
             }
             
             line = strNew();
             if (line == NULL)
             {
                 fclose(file);
-                return false;
+                return 1;
             }
         }
     }
     strPurge(line);
     fclose(file);
 
-    return true;
+    return 0;
 }
 
-logic fileWrite(array Lines, char* FilePath)
+uint8 fileWrite(array Lines, char* FilePath)
 {
     FILE* file;
 
     file = fopen(FilePath, "w");
     if (file == NULL)
     {
-        return false;
+        return 1;
     }
 
     for (uint64 i = 0; i < Lines->Length; i++)
@@ -70,5 +70,5 @@ logic fileWrite(array Lines, char* FilePath)
     }
     fclose(file);
 
-    return true;
+    return 0;
 }

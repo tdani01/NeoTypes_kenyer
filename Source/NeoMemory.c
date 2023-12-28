@@ -51,14 +51,14 @@ void* memLoad(char* FilePath, uint64 Size)
     return result;
 }
 
-logic memSave(void* Area, uint64 Size, char* FilePath)
+uint8 memSave(void* Area, uint64 Size, char* FilePath)
 {
     FILE* file;
 
     file = fopen(FilePath, "w");
     if (file == NULL)
     {
-        return false;
+        return 1;
     }
 
     for (uint64 i = 0; i < Size; i++)
@@ -67,5 +67,5 @@ logic memSave(void* Area, uint64 Size, char* FilePath)
     }
     fclose(file);
 
-    return true;
+    return 0;
 }
