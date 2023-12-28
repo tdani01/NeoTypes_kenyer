@@ -1,5 +1,4 @@
 #include "NeoTypes.h"
-#include <stdio.h>
 
 void* memCopy(void* Source, uint64 Size)
 {
