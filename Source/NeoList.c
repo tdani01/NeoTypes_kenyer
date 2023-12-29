@@ -93,7 +93,7 @@ uint8 listInsert(list List, uint64 Index, void* Value)
     List->Length++;
 
     free(List->Cache->Nodes);
-    List->Cache->Nodes = (listNode*)malloc(LIST_NODE_SIZE * 2);
+    List->Cache->Nodes = (listNode*)malloc(sizeof(void*) * 2);
     if (List->Cache->Nodes == NULL)
     {
         List->Cache->Size = 0;
