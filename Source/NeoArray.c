@@ -11,7 +11,7 @@ array arrNew(uint64 Length)
     {
         return NULL;
     }
-    
+
     Array->Values = (void**)calloc(Length, sizeof(void*));
     if (Length != 0 && Array->Values == NULL)
     {
@@ -49,13 +49,13 @@ uint8 arrInit(array Array, uint64 Length, void* Values, ...)
 
 uint8 arrInsert(array Array, uint64 Index, void* Value)
 {
-    Array->Values = (void**)realloc(Array->Values, sizeof(void*) * (Array->Length + 1));
+    Array->Length++;
+    Array->Values = (void**)realloc(Array->Values, sizeof(void*) * Array->Length);
     if (Array->Values == NULL)
     {
         Array->Length = 0;
         return 1;
     }
-    Array->Length++;
 
     for (uint64 i = Array->Length - 1; i > Index; i--)
     {
