@@ -173,7 +173,7 @@ uint8 strSplit(array Array, char* Characters, char Character)
 
                 for (uint64 i = 0; i < Array->Length; i++)
                 {
-                    strPurge(Array->Values[i]);
+                    strPurge((string)Array->Values[i]);
                 }
 
                 return 1;
@@ -187,7 +187,7 @@ uint8 strSplit(array Array, char* Characters, char Character)
 
                 for (uint64 i = 0; i < Array->Length; i++)
                 {
-                    strPurge(Array->Values[i]);
+                    strPurge((string)Array->Values[i]);
                 }
 
                 return 1;
@@ -211,7 +211,7 @@ uint8 strSplit(array Array, char* Characters, char Character)
             {
                 for (uint64 i = 0; i < Array->Length; i++)
                 {
-                    strPurge(Array->Values[i]);
+                    strPurge((string)Array->Values[i]);
                 }
 
                 return 1;

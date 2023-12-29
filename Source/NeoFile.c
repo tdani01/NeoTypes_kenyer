@@ -36,7 +36,7 @@ uint8 fileRead(char* FilePath, array Lines)
 
                 for (uint64 i = 0; i < Lines->Length; i++)
                 {
-                    strPurge(Lines->Values[i]);
+                    strPurge((string)Lines->Values[i]);
                 }
 
                 return 1;
@@ -58,7 +58,7 @@ uint8 fileRead(char* FilePath, array Lines)
 
                 for (uint64 i = 0; i < Lines->Length; i++)
                 {
-                    strPurge(Lines->Values[i]);
+                    strPurge((string)Lines->Values[i]);
                 }
 
                 return 1;
