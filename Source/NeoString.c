@@ -81,7 +81,6 @@ uint8 strConcat(string String, uint64 Count, char* Characters, ...)
 {
     char* StringTMP;
     uint64 StringLengthTMP;
-
     va_list CharactersArgs;
     uint64 current;
     char* CharactersTemp;
