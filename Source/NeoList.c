@@ -197,7 +197,6 @@ uint8 listCache(list List, uint64 CacheCoverage)
     listNode first;
     listNode last;
 
-    //Set the cache coverage
     if (CacheCoverage < 1)
     {
         CacheCoverage = 1;
@@ -208,18 +207,15 @@ uint8 listCache(list List, uint64 CacheCoverage)
     }
     List->Cache->Coverage = CacheCoverage;
 
-    //Save the first and last node
     first = List->Cache->Nodes[0];
     last = List->Cache->Nodes[List->Cache->Size - 1];
 
-    //Calculate the size of the cache
     List->Cache->Size = 1;
     for (uint64 i = 0; i < List->Length; i += List->Cache->Coverage)
     {
         List->Cache->Size++;
     }
 
-    //Initialize the cache
     free(List->Cache->Nodes);
     List->Cache->Nodes = (listNode*)malloc(sizeof(void*) * List->Cache->Size);
     if (List->Cache->Nodes == NULL)
@@ -232,7 +228,6 @@ uint8 listCache(list List, uint64 CacheCoverage)
     List->Cache->Nodes[0] = first;
     List->Cache->Nodes[List->Cache->Size - 1] = last;
 
-    //Fill the cache
     for (uint64 i = 0; i < List->Length; i++)
     {
         if (i % List->Cache->Coverage == 0)
