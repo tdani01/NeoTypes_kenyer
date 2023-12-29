@@ -29,7 +29,7 @@ string strNew()
     {
         return NULL;
     }
-    
+
     String->String = (char*)malloc(sizeof(char) * 1);
     if (String->String == NULL)
     {
@@ -64,15 +64,15 @@ uint8 strInit(string String, char* Characters)
 
 uint8 strAppend(string String, char Character)
 {
-    String->String = (char*)realloc(String->String, sizeof(char) * (String->Length + 1));
+    String->Length++;
+    String->String = (char*)realloc(String->String, sizeof(char) * String->Length);
     if (String->String == NULL)
     {
         String->Length = 0;
         return 1;
     }
-    String->String[String->Length - 1] = Character;
-    String->String[String->Length] = '\0';
-    String->Length++;
+    String->String[String->Length - 2] = Character;
+    String->String[String->Length - 1] = '\0';
 
     return 0;
 }
