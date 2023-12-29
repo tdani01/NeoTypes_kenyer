@@ -151,22 +151,14 @@ uint8 strRead(string String)
 
 uint8 strSplit(array Array, char* Characters, char Character)
 {
-    array result;
-    
     string StringTMP;
 
-    result = arrNew(0);
-    if (result == NULL)
-    {
-        return 1;
-    }
+    free(Array->Values);
+    Array->Values = NULL;
+    Array->Length = 0;
 
     StringTMP = strNew();
     if (StringTMP == NULL)
-    {
-        return 1;
-    }
-    if (arrInsert(result, result->Length, StringTMP) != 0)
     {
         return 1;
     }
@@ -175,33 +167,50 @@ uint8 strSplit(array Array, char* Characters, char Character)
     {
         if (Characters[i] != Character)
         {
-            if (strAppend((string)result->Values[result->Length - 1], Characters[i]) != 0)
+            if (strAppend(StringTMP, Characters[i]) != 0)
             {
+                free(StringTMP);
+
+                for (uint64 i = 0; i < Array->Length; i++)
+                {
+                    strPurge(Array->Values[i]);
+                }
+
                 return 1;
             }
         }
         else
         {
-            if (strAppend((string)result->Values[result->Length - 1], '\0') != 0)
+            if (strAppend(StringTMP, '\0') != 0)
             {
+                free(StringTMP);
+
+                for (uint64 i = 0; i < Array->Length; i++)
+                {
+                    strPurge(Array->Values[i]);
+                }
+
                 return 1;
             }
+
+            if (arrInsert(Array, Array->Length, StringTMP) != 0)
+            {
+                strPurge(StringTMP);
+                return 1;
+            }
+            
             StringTMP = strNew();
             if (StringTMP == NULL)
             {
-                return 1;
-            }
-            if (arrInsert(result, result->Length, StringTMP) != 0)
-            {
+                for (uint64 i = 0; i < Array->Length; i++)
+                {
+                    strPurge(Array->Values[i]);
+                }
+
                 return 1;
             }
         }
     }
-
-    free(Array->Values);
-    Array->Values = result->Values;
-    Array->Length = result->Length;
-    free(result);
 
     return 0;
 }
