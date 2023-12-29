@@ -221,7 +221,7 @@ uint8 listCache(list List, uint64 CacheCoverage)
 
     //Initialize the cache
     free(List->Cache->Nodes);
-    List->Cache->Nodes = (listNode*)malloc(LIST_NODE_SIZE * List->Cache->Size);
+    List->Cache->Nodes = (listNode*)malloc(sizeof(void*) * List->Cache->Size);
     if (List->Cache->Nodes == NULL)
     {
         List->Cache->Size = 0;
