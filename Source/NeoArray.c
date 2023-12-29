@@ -11,6 +11,7 @@ array arrNew(uint64 Length)
     {
         return NULL;
     }
+    
     Array->Values = (void**)calloc(Length, sizeof(void*));
     if (Length != 0 && Array->Values == NULL)
     {
