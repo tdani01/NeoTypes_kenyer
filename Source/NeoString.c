@@ -6,11 +6,6 @@ uint64 strLength(char* Characters)
 {
     uint64 length;
 
-    if (Characters == NULL)
-    {
-        return 0;
-    }
-
     length = 0;
     while (Characters[length] != '\0')
     {
