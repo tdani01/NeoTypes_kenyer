@@ -96,10 +96,8 @@ uint8 listInsert(list List, uint64 Index, void* Value)
     List->Cache->Nodes = (listNode*)malloc(LIST_NODE_SIZE * 2);
     if (List->Cache->Nodes == NULL)
     {
-        List->Cache->Size = 0;
-        List->Cache->Coverage = 0;
-        List->Length = 0;
-        return 1;
+        printf("NEOTYPES ERROR: Failed to allocate memory for List->Cache->Nodes in listInsert()\n");
+        exit(1);
     }
     List->Cache->Nodes[0] = first;
     List->Cache->Nodes[1] = last;
