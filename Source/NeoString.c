@@ -176,18 +176,6 @@ uint8 strSplit(array Array, char* Characters, char Character)
         }
         else
         {
-            if (strAppend(StringTMP, '\0') != 0)
-            {
-                free(StringTMP);
-
-                for (uint64 i = 0; i < Array->Length; i++)
-                {
-                    strPurge((string)Array->Values[i]);
-                }
-
-                return 1;
-            }
-
             if (StringTMP->String[0] != '\0')
             {
                 if (arrInsert(Array, Array->Length, StringTMP) != 0)
