@@ -56,6 +56,25 @@ void* memLoad(char* FilePath, uint64 Size)
     return result;
 }
 
+uint8 memLoadTo(char* FilePath, void* Destination, uint64 Size)
+{
+    FILE* file;
+
+    file = fopen(FilePath, "r");
+    if (file == NULL)
+    {
+        return 1;
+    }
+
+    for (uint64 i = 0; i < Size; i++)
+    {
+        ((uint8*)Destination)[i] = fgetc(file);
+    }
+    fclose(file);
+
+    return 0;
+}
+
 uint8 memSave(void* Area, uint64 Size, char* FilePath)
 {
     FILE* file;

@@ -241,4 +241,5 @@ Returns the address of the copied memory or NULL if the source is NULL or fails.
 void* memCopy(void* Source, uint64 Size);
 uint8 memCopyTo(void* Source, void* Destination, uint64 Size);
 void* memLoad(char* FilePath, uint64 Size);
+uint8 memLoadTo(char* FilePath, void* Destination, uint64 Size);
 uint8 memSave(void* Area, uint64 Size, char* FilePath);
