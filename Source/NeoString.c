@@ -193,10 +193,17 @@ uint8 strSplit(array Array, char* Characters, char Character)
                 return 1;
             }
 
-            if (arrInsert(Array, Array->Length, StringTMP) != 0)
+            if (StringTMP->String[0] != '\0')
+            {
+                if (arrInsert(Array, Array->Length, StringTMP) != 0)
+                {
+                    strPurge(StringTMP);
+                    return 1;
+                }
+            }
+            else
             {
                 strPurge(StringTMP);
-                return 1;
             }
             
             StringTMP = strNew();
@@ -210,6 +217,19 @@ uint8 strSplit(array Array, char* Characters, char Character)
                 return 1;
             }
         }
+    }
+
+    if (StringTMP->String[0] != '\0')
+    {
+        if (arrInsert(Array, Array->Length, StringTMP) != 0)
+        {
+            strPurge(StringTMP);
+            return 1;
+        }
+    }
+    else
+    {
+        strPurge(StringTMP);
     }
 
     return 0;
