@@ -129,6 +129,16 @@ uint8 strRead(string String)
 {
     char Character;
 
+    free(String->String);
+    String->String = (char*)malloc(sizeof(char) * 1);
+    if (String->String == NULL)
+    {
+        String->Length = 0;
+        return 1;
+    }
+    String->String[0] = '\0';
+    String->Length = 1;
+
     while ((Character = getchar()) != '\n')
     {
         if (strAppend(String, Character) != 0)
