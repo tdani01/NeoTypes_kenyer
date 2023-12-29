@@ -4,11 +4,6 @@ void* memCopy(void* Source, uint64 Size)
 {
     void* result;
 
-    if (Source == NULL)
-    {
-        return NULL;
-    }
-
     result = malloc(Size);
     if (result == NULL)
     {
@@ -25,11 +20,6 @@ void* memCopy(void* Source, uint64 Size)
 
 uint8 memCopyTo(void* Source, void* Destination, uint64 Size)
 {
-    if (Source == NULL || Destination == NULL)
-    {
-        return 1;
-    }
-
     for (uint64 i = 0; i < Size; i++)
     {
         ((uint8*)Destination)[i] = ((uint8*)Source)[i];
