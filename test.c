@@ -2,15 +2,11 @@
 
 sint32 main(sint32 argc, char* *argv)
 {
-    array file;
+    string str;
 
-    file = arrNew(0);
-    fileRead("test.txt", file);
-
-    for (uint8 i = 0; i < file->Length; i++)
-    {
-        printf("%s\n", ((string)file->Values[i])->String);
-    }
+    str = strNew();
+    strRead(str);
+    printf("%s\n", str->String);
 
     return 0;
 }
