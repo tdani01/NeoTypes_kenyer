@@ -6,15 +6,15 @@ uint8 fileRead(char* FilePath, array Lines)
     string line;
     char character;
 
+    free(Lines->Values);
+    Lines->Values = NULL;
+    Lines->Length = 0;
+
     file = fopen(FilePath, "r");
     if (file == NULL)
     {
         return 1;
     }
-
-    free(Lines->Values);
-    Lines->Values = NULL;
-    Lines->Length = 0;
 
     line = strNew();
     if (line == NULL)
@@ -22,6 +22,7 @@ uint8 fileRead(char* FilePath, array Lines)
         fclose(file);
         return 1;
     }
+
     while (!feof(file))
     {
         character = fgetc(file);
@@ -30,8 +31,14 @@ uint8 fileRead(char* FilePath, array Lines)
         {
             if (strAppend(line, character) != 0)
             {
-                strPurge(line);
+                free(line);
                 fclose(file);
+
+                for (uint64 i = 0; i < Lines->Length; i++)
+                {
+                    strPurge(Lines->Values[i]);
+                }
+
                 return 1;
             }
         }
@@ -48,6 +55,12 @@ uint8 fileRead(char* FilePath, array Lines)
             if (line == NULL)
             {
                 fclose(file);
+
+                for (uint64 i = 0; i < Lines->Length; i++)
+                {
+                    strPurge(Lines->Values[i]);
+                }
+
                 return 1;
             }
         }
