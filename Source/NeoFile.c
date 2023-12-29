@@ -12,6 +12,10 @@ uint8 fileRead(char* FilePath, array Lines)
         return 1;
     }
 
+    free(Lines->Values);
+    Lines->Values = NULL;
+    Lines->Length = 0;
+
     line = strNew();
     if (line == NULL)
     {
@@ -48,6 +52,7 @@ uint8 fileRead(char* FilePath, array Lines)
             }
         }
     }
+
     strPurge(line);
     fclose(file);
 

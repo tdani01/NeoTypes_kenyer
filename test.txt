@@ -1,0 +1,6 @@
+Hello World!
+This is a test for NeoFile.c
+New line
+Another line
+End of stream
+xD
