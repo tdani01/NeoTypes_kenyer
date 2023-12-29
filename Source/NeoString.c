@@ -29,6 +29,7 @@ string strNew()
     {
         return NULL;
     }
+    
     String->String = (char*)malloc(sizeof(char) * 1);
     if (String->String == NULL)
     {
