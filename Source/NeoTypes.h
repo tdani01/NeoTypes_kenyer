@@ -38,6 +38,22 @@ typedef signed int sint32;
 typedef unsigned long long uint64;
 typedef signed long long sint64;
 
+typedef union
+{
+    logic Logic;
+
+    uint64 uInt;
+    sint64 sInt;
+    double Double;
+
+    array Array;
+    string String;
+    list List;
+
+    void* Pointer;
+    
+} NeoTypes;
+
 //_____________________________________________NeoCast.c_____________________________________________//
 
 /*Process a binary value stored in a double as an unsigned integer.*/
@@ -51,7 +67,7 @@ double asDOUBLE(uint64 Value);
 
 struct arrayStruct
 {
-    void* *Values;
+    NeoTypes* Values;
     uint64 Length;
 };
 
@@ -60,19 +76,14 @@ Returns the address of the array or NULL if fails.
 Warning: calling this function on an initialized array can cause memory leaks, before calling this function second time you must use arrPurge().
 Important: you must always initialize an array with this function before use.*/
 array arrNew(uint64 Length);
-/*Clears the elements of the given array and initializes it with the new ones.
-Returns 0 on success and 1 on error.
-Warning: if fails the Array->Values will be NULL and the Array->Length will be 0.
-Important: if the previous elements of the array were pointers allocated with a malloc(), calloc() or realloc() it's recommended to first call free() on those pointers to avoid memory leaks.
-Note: this function can not replace the arrNew() function.*/
-uint8 arrInit(array Array, uint64 Length, void* Values, ...);
 
+NeoTypes* arrElement(array Array, uint64 Index);
 /*Inserts a new element into an array.
 To add a new element to the end of an array you must use Array->Length as index.
 Returns 0 on success and 1 on error.
 Warning: if fails the Array->Values will be NULL and the Array->Length will be 0.
 Important: failures can lead to memory leaks.*/
-uint8 arrInsert(array Array, uint64 Index, void* Value);
+NeoTypes* arrInsert(array Array, uint64 Index);
 /*Removes an element from an array at the given index.
 Returns 0 on success and 1 on error.
 Warning: if fails the Array->Values will be NULL and the Array->Length will be 0.

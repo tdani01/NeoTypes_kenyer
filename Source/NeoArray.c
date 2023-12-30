@@ -1,6 +1,6 @@
 #include "NeoTypes.h"
 
-#define ARRAY_SIZE (sizeof(void*) + sizeof(uint64))
+#define ARRAY_SIZE (sizeof(NeoTypes) + sizeof(uint64))
 
 array arrNew(uint64 Length)
 {
@@ -9,7 +9,7 @@ array arrNew(uint64 Length)
     Array = (array)malloc(ARRAY_SIZE);
     if (Array == NULL)
     {
-        printf("arrNew(): Memory allocation failed\nArguments: Length: %lld\n", Length);
+        printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
         exit(1);
     }
 
@@ -20,10 +20,10 @@ array arrNew(uint64 Length)
     }
     else
     {
-        Array->Values = (void**)calloc(Length, sizeof(void*));
+        Array->Values = (NeoTypes*)calloc(Length, sizeof(NeoTypes) * Length);
         if (Array->Values == NULL)
         {
-            printf("arrNew(): Memory allocation failed\nArguments: Length: %lld\n", Length);
+            printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
             exit(1);
         }
         Array->Length = Length;
@@ -32,59 +32,40 @@ array arrNew(uint64 Length)
     return Array;
 }
 
-uint8 arrInit(array Array, uint64 Length, void* Values, ...)
-{
-    va_list ValuesArgs;
-
-    if (Array == NULL)
-    {
-        printf("arrInit(): Array must not be NULL\nArguments: Array: %p, Length: %lld, (first)Value(s): %p\n", Array, Length, Values);
-        exit(1);
-    }
-    if (Length == 0)
-    {
-        printf("arrInit(): Length must be greater than 0\nArguments: Array: %p, Length: %lld, (first)Value(s): %p\n", Array, Length, Values);
-        exit(1);
-    }
-
-    free(Array->Values);
-    Array->Values = (void**)malloc(sizeof(void*) * Length);
-    if (Array->Values == NULL)
-    {
-        printf("arrInit(): Memory allocation failed\nArguments: Array: %p, Length: %lld, Values: %p\n", Array, Length, Values);
-        exit(1);
-    }
-    Array->Length = Length;
-
-    va_start(ValuesArgs, Values);
-    Array->Values[0] = Values;
-    for (uint64 i = 1; i < Length; i++)
-    {
-        Array->Values[i] = va_arg(ValuesArgs, void*);
-    }
-    va_end(ValuesArgs);
-
-    return 0;
-}
-
-uint8 arrInsert(array Array, uint64 Index, void* Value)
+NeoTypes* arrElement(array Array, uint64 Index)
 {
     if (Array == NULL)
     {
-        printf("arrInsert(): Array must not be NULL\nArguments: Array: %p, Index: %lld, Value: %p\n", Array, Index, Value);
+        printf("arrInsert(): Array must not be NULL\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
     if (Array->Length < Index)
     {
-        printf("arrInsert(): Index out of range\nArguments: Array: %p, Index: %lld, Value: %p\n", Array, Index, Value);
+        printf("arrInsert(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
+        exit(1);
+    }
+
+    return &Array->Values[Index];
+}
+
+NeoTypes* arrInsert(array Array, uint64 Index)
+{
+    if (Array == NULL)
+    {
+        printf("arrInsert(): Array must not be NULL\nParams: Array: %p, Index: %lld\n", Array, Index);
+        exit(1);
+    }
+    if (Array->Length < Index)
+    {
+        printf("arrInsert(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
 
     Array->Length++;
-    Array->Values = (void**)realloc(Array->Values, sizeof(void*) * Array->Length);
+    Array->Values = (NeoTypes*)realloc(Array->Values, sizeof(NeoTypes) * Array->Length);
     if (Array->Values == NULL)
     {
-        printf("arrInsert(): Memory allocation failed\nArguments: Array: %p, Index: %lld, Value: %p\n", Array, Index, Value);
+        printf("arrInsert(): Memory allocation failed\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
 
@@ -92,21 +73,20 @@ uint8 arrInsert(array Array, uint64 Index, void* Value)
     {
         Array->Values[i] = Array->Values[i - 1];
     }
-    Array->Values[Index] = Value;
 
-    return 0;
+    return &Array->Values[Index];
 }
 
 uint8 arrRemove(array Array, uint64 Index)
 {
     if (Array == NULL)
     {
-        printf("arrRemove(): Array must not be NULL\nArguments: Array: %p, Index: %lld\n", Array, Index);
+        printf("arrRemove(): Array must not be NULL\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
     if (Array->Length < Index)
     {
-        printf("arrRemove(): Index out of range\nArguments: Array: %p, Index: %lld\n", Array, Index);
+        printf("arrRemove(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
 
@@ -123,10 +103,10 @@ uint8 arrRemove(array Array, uint64 Index)
     }
     else
     {
-        Array->Values = (void**)realloc(Array->Values, sizeof(void*) * Array->Length);
+        Array->Values = (NeoTypes*)realloc(Array->Values, sizeof(NeoTypes) * Array->Length);
         if (Array->Values == NULL)
         {
-            printf("arrRemove(): Memory allocation failed\nArguments: Array: %p, Index: %lld\n", Array, Index);
+            printf("arrRemove(): Memory allocation failed\nParams: Array: %p, Index: %lld\n", Array, Index);
             exit(1);
         }
     }
