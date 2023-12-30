@@ -36,12 +36,12 @@ NeoTypes* arrElement(array Array, uint64 Index)
 {
     if (Array == NULL)
     {
-        printf("arrInsert(): Array must not be NULL\nParams: Array: %p, Index: %lld\n", Array, Index);
+        printf("arrElement(): Array must not be NULL\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
     if (Array->Length < Index)
     {
-        printf("arrInsert(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
+        printf("arrElement(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
 
@@ -88,6 +88,11 @@ uint8 arrRemove(array Array, uint64 Index)
     if (Array->Length < Index)
     {
         printf("arrRemove(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
+        exit(1);
+    }
+    if (Array->Length == 0)
+    {
+        printf("arrRemove(): Empty array\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
 
