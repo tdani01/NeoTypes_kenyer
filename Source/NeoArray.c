@@ -3,7 +3,7 @@
 
 #define ARRAY_SIZE (sizeof(void*) + sizeof(uint64))
 
-array arrNew(uint64 Length) //STABLE
+array arrNew(uint64 Length)
 {
     array Array;
 
@@ -33,7 +33,7 @@ array arrNew(uint64 Length) //STABLE
     return Array;
 }
 
-uint8 arrInit(array Array, uint64 Length, void* Values, ...) //STABLE
+uint8 arrInit(array Array, uint64 Length, void* Values, ...)
 {
     va_list ValuesArgs;
 
@@ -63,7 +63,7 @@ uint8 arrInit(array Array, uint64 Length, void* Values, ...) //STABLE
     return 0;
 }
 
-uint8 arrInsert(array Array, uint64 Index, void* Value) //STABLE
+uint8 arrInsert(array Array, uint64 Index, void* Value)
 {
     if (Array->Length < Index)
     {
@@ -88,7 +88,7 @@ uint8 arrInsert(array Array, uint64 Index, void* Value) //STABLE
     return 0;
 }
 
-uint8 arrRemove(array Array, uint64 Index) //STABLE
+uint8 arrRemove(array Array, uint64 Index)
 {
     if (Array->Length < Index)
     {
@@ -120,7 +120,7 @@ uint8 arrRemove(array Array, uint64 Index) //STABLE
     return 0;
 }
 
-uint8 arrPurge(array* Array) //STABLE
+uint8 arrPurge(array* Array)
 {
     if (*Array == NULL)
     {
