@@ -85,7 +85,7 @@ uint8 arrRemove(array Array, uint64 Index)
         printf("arrRemove(): Array must not be NULL\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
-    if (Array->Length < Index)
+    if (Array->Length <= Index)
     {
         printf("arrRemove(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
