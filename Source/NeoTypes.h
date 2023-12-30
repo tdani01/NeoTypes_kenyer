@@ -54,15 +54,6 @@ typedef union
     
 } NeoTypes;
 
-//_____________________________________________NeoCast.c_____________________________________________//
-
-/*Process a binary value stored in a double as an unsigned integer.*/
-uint64 asUINT(double Value);
-/*Process a binary value stored in a double as a signed integer.*/
-sint64 asSINT(double Value);
-/*Process a binary value stored in an integer as a double.*/
-double asDOUBLE(uint64 Value);
-
 //_____________________________________________NeoArray.c____________________________________________//
 
 struct arrayStruct
