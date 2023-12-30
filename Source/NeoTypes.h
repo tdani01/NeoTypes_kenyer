@@ -236,6 +236,10 @@ uint8 fileWrite(array Lines, char* FilePath);
 
 //____________________________________________NeoMemory.c____________________________________________//
 
+uint8 memAlloc(void** PTR, uint64 Size);
+uint8 memCalloc(void** PTR, uint64 Size);
+uint8 memRealloc(void** PTR, uint64 Size);
+uint8 memFree(void** PTR);
 /*Copies a block of memory.
 Returns the address of the copied memory or NULL if the source is NULL or fails.*/
 void* memCopy(void* Source, uint64 Size);
