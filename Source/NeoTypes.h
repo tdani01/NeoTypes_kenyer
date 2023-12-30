@@ -7,7 +7,7 @@
 
 #define true 1
 #define false 0
-typedef char logic;
+typedef unsigned char logic;
 typedef unsigned char uint8;
 typedef signed char sint8;
 typedef unsigned short uint16;
