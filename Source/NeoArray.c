@@ -88,7 +88,7 @@ uint8 arrInsert(array Array, uint64 Index, void* Value) //STABLE
     return 0;
 }
 
-uint8 arrRemove(array Array, uint64 Index)
+uint8 arrRemove(array Array, uint64 Index) //STABLE
 {
     if (Array->Length < Index)
     {
