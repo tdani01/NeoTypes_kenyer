@@ -36,9 +36,14 @@ uint8 arrInit(array Array, uint64 Length, void* Values, ...)
 {
     va_list ValuesArgs;
 
+    if (Array == NULL)
+    {
+        printf("arrInit(): Array must not be NULL\nArguments: Array: %p, Length: %lld, (First)Value(s): %p\n", Array, Length, Values);
+        exit(1);
+    }
     if (Length == 0)
     {
-        printf("arrInit(): Length must be greater than 0\nArguments: Array: %p, Length: %lld, Values: %p\n", Array, Length, Values);
+        printf("arrInit(): Length must be greater than 0\nArguments: Array: %p, Length: %lld, (First)Value(s): %p\n", Array, Length, Values);
         exit(1);
     }
 
@@ -64,6 +69,11 @@ uint8 arrInit(array Array, uint64 Length, void* Values, ...)
 
 uint8 arrInsert(array Array, uint64 Index, void* Value)
 {
+    if (Array == NULL)
+    {
+        printf("arrInsert(): Array must not be NULL\nArguments: Array: %p, Index: %lld, Value: %p\n", Array, Index, Value);
+        exit(1);
+    }
     if (Array->Length < Index)
     {
         printf("arrInsert(): Index out of range\nArguments: Array: %p, Index: %lld, Value: %p\n", Array, Index, Value);
@@ -89,6 +99,11 @@ uint8 arrInsert(array Array, uint64 Index, void* Value)
 
 uint8 arrRemove(array Array, uint64 Index)
 {
+    if (Array == NULL)
+    {
+        printf("arrRemove(): Array must not be NULL\nArguments: Array: %p, Index: %lld\n", Array, Index);
+        exit(1);
+    }
     if (Array->Length < Index)
     {
         printf("arrRemove(): Index out of range\nArguments: Array: %p, Index: %lld\n", Array, Index);
