@@ -38,12 +38,12 @@ uint8 arrInit(array Array, uint64 Length, void* Values, ...)
 
     if (Array == NULL)
     {
-        printf("arrInit(): Array must not be NULL\nArguments: Array: %p, Length: %lld, (First)Value(s): %p\n", Array, Length, Values);
+        printf("arrInit(): Array must not be NULL\nArguments: Array: %p, Length: %lld, (first)Value(s): %p\n", Array, Length, Values);
         exit(1);
     }
     if (Length == 0)
     {
-        printf("arrInit(): Length must be greater than 0\nArguments: Array: %p, Length: %lld, (First)Value(s): %p\n", Array, Length, Values);
+        printf("arrInit(): Length must be greater than 0\nArguments: Array: %p, Length: %lld, (first)Value(s): %p\n", Array, Length, Values);
         exit(1);
     }
 
