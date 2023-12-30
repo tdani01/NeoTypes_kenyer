@@ -82,7 +82,7 @@ uint8 arrRemove(array Array, uint64 Index);
 /*Deallocates an array from the memory with all of its elements.
 Important: if the elements of the array were pointers allocated with a malloc(), calloc() or realloc() it's recommended to first call free() on those pointers to avoid memory leaks.
 Note: it's recommended to set the Array's value to NULL after calling this function, it's safe to pass a NULL value to this function.*/
-uint8 arrPurge(array Array);
+uint8 arrPurge(array* Array);
 
 //____________________________________________NeoString.c____________________________________________//
 
