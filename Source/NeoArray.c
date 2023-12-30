@@ -39,7 +39,7 @@ NeoTypes* arrElement(array Array, uint64 Index)
         printf("arrElement(): Array must not be NULL\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
-    if (Array->Length < Index)
+    if (Array->Length <= Index)
     {
         printf("arrElement(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
