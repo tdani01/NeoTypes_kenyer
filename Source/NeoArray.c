@@ -73,6 +73,7 @@ NeoTypes* arrInsert(array Array, uint64 Index)
     {
         Array->Values[i] = Array->Values[i - 1];
     }
+    Array->Values[Index].Pointer = NULL;
 
     return &Array->Values[Index];
 }
