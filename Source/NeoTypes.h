@@ -7,7 +7,6 @@
 
 #define true 1
 #define false 0
-/*Also known as bool or boolean.*/
 typedef char logic;
 typedef unsigned char uint8;
 typedef signed char sint8;
