@@ -20,7 +20,7 @@ array arrNew(uint64 Length)
     }
     else
     {
-        Array->Values = (NeoTypes*)calloc(Length, sizeof(NeoTypes) * Length);
+        Array->Values = (NeoTypes*)calloc(Length, sizeof(NeoTypes));
         if (Array->Values == NULL)
         {
             printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
