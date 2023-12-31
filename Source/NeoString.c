@@ -49,7 +49,7 @@ uint8 strInit(string String, char* Characters)
 {
     if (String == NULL)
     {
-        printf("strInit(): String must not be NULL\nParams: String: %p, Characters:%p\n", String, Characters);
+        printf("strInit(): String must not be NULL\nParams: String: %p, Characters: %p\n", String, Characters);
         exit(1);
     }
     if (Characters == NULL)
@@ -58,19 +58,14 @@ uint8 strInit(string String, char* Characters)
     }
 
     String->Length = strLength(Characters);
-    free(String->String);
-    String->String = (char*)malloc(sizeof(char) * String->Length);
+    String->String = (char*)realloc(String->String, sizeof(char) * String->Length);
     if (String->String == NULL)
     {
         printf("strInit(): Memory allocation failed\nParams: String: %p, Characters: %p\n", String, Characters);
         exit(1);
     }
 
-    for (uint64 i = 0; i < String->Length; i++)
-    {
-        String->String[i] = Characters[i];
-    }
-    String->String[String->Length - 1] = '\0';
+    memCopyTo(Characters, String->String, String->Length);
 
     return 0;
 }

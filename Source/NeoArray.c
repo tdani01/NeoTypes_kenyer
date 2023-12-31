@@ -73,7 +73,7 @@ NeoTypes* arrInsert(array Array, uint64 Index)
     {
         Array->Values[i] = Array->Values[i - 1];
     }
-    Array->Values[Index].Pointer = NULL;
+    Array->Values[Index].uInt = 0;
 
     return &Array->Values[Index];
 }
@@ -92,7 +92,7 @@ uint8 arrRemove(array Array, uint64 Index)
     }
     if (Array->Length == 0)
     {
-        printf("arrRemove(): Empty array\nParams: Array: %p, Index: %lld\n", Array, Index);
+        printf("arrRemove(): Array must not be empty\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
 
