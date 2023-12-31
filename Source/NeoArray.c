@@ -1,6 +1,6 @@
 #include "NeoTypes.h"
 
-#define ARRAY_SIZE (sizeof(NeoTypes) + sizeof(uint64))
+#define ARRAY_SIZE (sizeof(void*) + sizeof(uint64))
 
 array arrNew(uint64 Length)
 {

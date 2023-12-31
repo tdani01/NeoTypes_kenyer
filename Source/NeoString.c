@@ -6,6 +6,12 @@ uint64 strLength(char* Characters)
 {
     uint64 length;
 
+    if (Characters == NULL)
+    {
+        printf("strLength(): Characters must not be NULL\nParams: Characters: %p\n", Characters);
+        exit(1);
+    }
+
     length = 0;
     while (Characters[length] != '\0')
     {
@@ -22,15 +28,17 @@ string strNew()
     String = (string)malloc(STRING_SIZE);
     if (String == NULL)
     {
-        return NULL;
+        printf("strNew(): Memory allocation failed\n");
+        exit(1);
     }
 
     String->String = (char*)malloc(sizeof(char) * 1);
     if (String->String == NULL)
     {
-        free(String);
-        return NULL;
+        printf("strNew(): Memory allocation failed\n");
+        exit(1);
     }
+
     String->String[0] = '\0';
     String->Length = 1;
 
@@ -38,14 +46,24 @@ string strNew()
 }
 
 uint8 strInit(string String, char* Characters)
-{   
+{
+    if (String == NULL)
+    {
+        printf("strInit(): String must not be NULL\nParams: String: %p, Characters:%p\n", String, Characters);
+        exit(1);
+    }
+    if (Characters == NULL)
+    {
+        printf("strInit(): Character must not be NULL\nParams: String: %p, Characters: %p\n", String, Characters);
+    }
+
     String->Length = strLength(Characters);
     free(String->String);
     String->String = (char*)malloc(sizeof(char) * String->Length);
     if (String->String == NULL)
     {
-        String->Length = 0;
-        return 1;
+        printf("strInit(): Memory allocation failed\nParams: String: %p, Characters: %p\n", String, Characters);
+        exit(1);
     }
 
     for (uint64 i = 0; i < String->Length; i++)
