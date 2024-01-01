@@ -6,6 +6,17 @@ uint8 fileRead(char* FilePath, array Lines)
     string line;
     char character;
 
+    if (FilePath == NULL)
+    {
+        printf("fileRead(): FilePath must not be NULL\nParams: FilePath: %s, Lines: %p\n", FilePath, Lines);
+        exit(1);
+    }
+    if (Lines == NULL)
+    {
+        printf("fileRead(): Lines must not be NULL\nParams: FilePath: %s, Lines: %p\n", FilePath, Lines);
+        exit(1);
+    }
+
     Lines->Values = realloc(Lines->Values, 0);
     Lines->Length = 0;
 
