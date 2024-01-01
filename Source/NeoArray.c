@@ -120,16 +120,15 @@ uint8 arrRemove(array Array, uint64 Index)
     return 0;
 }
 
-uint8 arrPurge(array* Array)
+uint8 arrPurge(array Array)
 {
-    if (*Array == NULL)
+    if (Array == NULL)
     {
         return 0;
     }
 
-    free((*Array)->Values);
-    free(*Array);
-    *Array = NULL;
+    free((Array)->Values);
+    free(Array);
 
     return 0;
 }

@@ -52,7 +52,7 @@ NeoTypes* arrElement(array Array, uint64 Index);
 NeoTypes* arrInsert(array Array, uint64 Index);
 uint8 arrRemove(array Array, uint64 Index);
 
-uint8 arrPurge(array* Array);
+uint8 arrPurge(array Array);
 
 //____________________________________________NeoString.c____________________________________________//
 
@@ -124,14 +124,9 @@ uint8 fileWrite(array Lines, char* FilePath);
 
 //____________________________________________NeoMemory.c____________________________________________//
 
-uint8 memAlloc(void** PTR, uint64 Size);
-uint8 memCalloc(void** PTR, uint64 Size);
-uint8 memRealloc(void** PTR, uint64 Size);
-uint8 memFree(void** PTR);
-
 void* memCopy(void* Source, uint64 Size);
 uint8 memCopyTo(void* Source, void* Destination, uint64 Size);
 
 void* memLoad(char* FilePath, uint64 Size);
 uint8 memLoadTo(char* FilePath, void* Destination, uint64 Size);
-uint8 memSave(void* Area, uint64 Size, char* FilePath);
+uint8 memSave(void* Source, uint64 Size, char* FilePath);
