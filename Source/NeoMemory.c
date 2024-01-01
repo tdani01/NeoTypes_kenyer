@@ -45,6 +45,7 @@ void* memLoad(char* FilePath, uint64 Size)
 
     if (memLoadTo(FilePath, result, Size) != 0)
     {
+        free(result);
         return NULL;
     }
 
