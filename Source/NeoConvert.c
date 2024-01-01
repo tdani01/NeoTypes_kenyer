@@ -4,6 +4,8 @@ uint64 STRtoUINT(char* Characters, logic* Success)
 {
     uint64 result;
 
+    uint64 CharactersLength;
+
     if (Characters == NULL)
     {
         printf("STRtoUINT(): Characters must not be NULL\nParams: Characters: %p, Success: %p\n", Characters, Success);
@@ -11,7 +13,8 @@ uint64 STRtoUINT(char* Characters, logic* Success)
     }
 
     result = 0;
-    for (uint64 i = 0; i < strLength(Characters) - 1; i++)
+    CharactersLength = strLength(Characters);
+    for (uint64 i = 0; i < CharactersLength - 1; i++)
     {
         if ((Characters[i] < '0' || '9' < Characters[i]))
         {
@@ -21,7 +24,7 @@ uint64 STRtoUINT(char* Characters, logic* Success)
             }
             return 0;
         }
-        result += (Characters[i] - '0') * pow(10, strLength(Characters) - 2 - i);
+        result += (Characters[i] - '0') * pow(10, CharactersLength - 2 - i);
     }
 
     if (Success != NULL)
@@ -44,7 +47,7 @@ uint8 UINTtoSTR(uint64 Number, string String)
 
     strInit(String, "");
 
-    for (i = 1; Number / i > 10; i *= 10);
+    for (i = 1; 10 < Number / i; i *= 10);
     for (; i > 0; i /= 10)
     {
         strAppend(String, Number / i + '0');
@@ -60,6 +63,8 @@ sint64 STRtoSINT(char* Characters, logic* Success)
 {
     sint64 result;
 
+    uint64 CharactersLength;
+
     if (Characters == NULL)
     {
         printf("STRtoSINT(): Characters must not be NULL\nParams: Characters: %p, Success: %p\n", Characters, Success);
@@ -67,7 +72,8 @@ sint64 STRtoSINT(char* Characters, logic* Success)
     }
 
     result = 0;
-    for (uint64 i = 1; i < strLength(Characters) - 1; i++)
+    CharactersLength = strLength(Characters);
+    for (uint64 i = 1; i < CharactersLength - 1; i++)
     {
         if ((Characters[i] < '0' || '9' < Characters[i]))
         {
@@ -77,7 +83,7 @@ sint64 STRtoSINT(char* Characters, logic* Success)
             }
             return 0;
         }
-        result += (Characters[i] - '0') * pow(10, strLength(Characters) - 2 - i);
+        result += (Characters[i] - '0') * pow(10, CharactersLength - 2 - i);
     }
 
     if (Characters[0] == '-')
@@ -94,7 +100,7 @@ sint64 STRtoSINT(char* Characters, logic* Success)
             }
             return 0;
         }
-        result += (Characters[0] - '0') * pow(10, strLength(Characters) - 2);
+        result += (Characters[0] - '0') * pow(10, CharactersLength - 2);
     }
 
     if (Success != NULL)
@@ -123,7 +129,7 @@ uint8 SINTtoSTR(sint64 Number, string String)
         strAppend(String, '-');
     }
 
-    for (i = 1; Number / i > 10; i *= 10);
+    for (i = 1; 10 < Number / i; i *= 10);
     for (; i > 0; i /= 10)
     {
         strAppend(String, Number / i + '0');
