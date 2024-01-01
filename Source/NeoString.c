@@ -1,5 +1,4 @@
 #include "NeoTypes.h"
-#include <stdio.h>
 
 #define STRING_SIZE (sizeof(void*) + sizeof(uint64))
 
