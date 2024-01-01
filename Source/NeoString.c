@@ -186,36 +186,18 @@ uint8 strSplit(array Array, char* Characters, char Character)
     Array->Length = 0;
 
     StringTMP = strNew();
-    if (StringTMP == NULL)
-    {
-        return 1;
-    }
 
     for (uint64 i = 0; i < strLength(Characters) - 1; i++)
     {
         if (Characters[i] != Character)
         {
-            if (strAppend(StringTMP, Characters[i]) != 0)
-            {
-                free(StringTMP);
-
-                for (uint64 i = 0; i < Array->Length; i++)
-                {
-                    strPurge((string)Array->Values[i]);
-                }
-
-                return 1;
-            }
+            strAppend(StringTMP, Characters[i]);
         }
         else
         {
-            if (StringTMP->String[0] != '\0')
+            if (1 < StringTMP->Length)
             {
-                if (arrInsert(Array, Array->Length, StringTMP) != 0)
-                {
-                    strPurge(StringTMP);
-                    return 1;
-                }
+                arrInsert(Array, Array->Length)->String = StringTMP;
             }
             else
             {
@@ -223,25 +205,12 @@ uint8 strSplit(array Array, char* Characters, char Character)
             }
             
             StringTMP = strNew();
-            if (StringTMP == NULL)
-            {
-                for (uint64 i = 0; i < Array->Length; i++)
-                {
-                    strPurge((string)Array->Values[i]);
-                }
-
-                return 1;
-            }
         }
     }
 
-    if (StringTMP->String[0] != '\0')
+    if (1 < StringTMP->Length)
     {
-        if (arrInsert(Array, Array->Length, StringTMP) != 0)
-        {
-            strPurge(StringTMP);
-            return 1;
-        }
+        arrInsert(Array, Array->Length)->String = StringTMP;
     }
     else
     {
