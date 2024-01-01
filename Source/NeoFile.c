@@ -84,7 +84,7 @@ uint8 fileWrite(array Lines, char* FilePath)
 
     for (uint64 i = 0; i < Lines->Length; i++)
     {
-        fprintf(file, "%s\n", ((string)Lines->Values[i])->String);
+        fprintf(file, "%s\n", Lines->Values[i].String->String);
     }
     fclose(file);
 
