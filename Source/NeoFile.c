@@ -6,8 +6,7 @@ uint8 fileRead(char* FilePath, array Lines)
     string line;
     char character;
 
-    free(Lines->Values);
-    Lines->Values = NULL;
+    Lines->Values = realloc(Lines->Values, 0);
     Lines->Length = 0;
 
     file = fopen(FilePath, "r");
@@ -17,11 +16,6 @@ uint8 fileRead(char* FilePath, array Lines)
     }
 
     line = strNew();
-    if (line == NULL)
-    {
-        fclose(file);
-        return 1;
-    }
 
     while (!feof(file))
     {
@@ -29,40 +23,13 @@ uint8 fileRead(char* FilePath, array Lines)
 
         if (character != '\n')
         {
-            if (strAppend(line, character) != 0)
-            {
-                free(line);
-                fclose(file);
-
-                for (uint64 i = 0; i < Lines->Length; i++)
-                {
-                    strPurge((string)Lines->Values[i]);
-                }
-
-                return 1;
-            }
+            strAppend(line, character);
         }
         else
         {
-            if (arrInsert(Lines, Lines->Length, line) != 0)
-            {
-                strPurge(line);
-                fclose(file);
-                return 1;
-            }
+            arrInsert(Lines, Lines->Length)->String = line;
             
             line = strNew();
-            if (line == NULL)
-            {
-                fclose(file);
-
-                for (uint64 i = 0; i < Lines->Length; i++)
-                {
-                    strPurge((string)Lines->Values[i]);
-                }
-
-                return 1;
-            }
         }
     }
 
