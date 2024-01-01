@@ -124,7 +124,8 @@ uint8 strConcat(string String, uint64 Count, char* Characters, ...)
     StringTMP = (char*)malloc(sizeof(char) * StringLengthTMP);
     if (StringTMP == NULL)
     {
-        return 1;
+        printf("strConcat(): Memory allocation failed\nParams: String: %p, Count: %lld, Characters: %p\n", String, Count, Characters);
+        exit(1);
     }
 
     va_start(CharactersArgs, Characters);
