@@ -48,7 +48,7 @@ uint8 UINTtoSTR(uint64 Number, string String)
     strInit(String, "");
 
     for (i = 1; 10 < Number / i; i *= 10);
-    for (; i > 0; i /= 10)
+    for (; 0 < i; i /= 10)
     {
         strAppend(String, Number / i + '0');
         Number %= i;
@@ -130,7 +130,7 @@ uint8 SINTtoSTR(sint64 Number, string String)
     }
 
     for (i = 1; 10 < Number / i; i *= 10);
-    for (; i > 0; i /= 10)
+    for (; 0 < i; i /= 10)
     {
         strAppend(String, Number / i + '0');
         Number %= i;
@@ -158,7 +158,7 @@ double STRtoDOUBLE(char* Characters, logic* Success)
     decimal = CharactersLength - 1;
     for (uint64 i = 0; i < CharactersLength - 1; i++)
     {
-        if (Characters[i] == '.' || Characters[i] == ',')
+        if (Characters[i] == '.')
         {
             decimal = i;
             break;
