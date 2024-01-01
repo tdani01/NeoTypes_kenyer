@@ -43,6 +43,17 @@ uint8 fileWrite(array Lines, char* FilePath)
 {
     FILE* file;
 
+    if (Lines == NULL)
+    {
+        printf("fileWrite(): Lines must not be NULL\nParams: Lines: %p, FilePath: %s\n", Lines, FilePath);
+        exit(1);
+    }
+    if (FilePath == NULL)
+    {
+        printf("fileWrite(): FilePath must not be NULL\nParams: Lines: %p, FilePath: %s\n", Lines, FilePath);
+        exit(1);
+    }
+
     file = fopen(FilePath, "w");
     if (file == NULL)
     {
