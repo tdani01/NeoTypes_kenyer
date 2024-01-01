@@ -1,4 +1,5 @@
 #include "NeoTypes.h"
+#include <stdio.h>
 
 #define STRING_SIZE (sizeof(void*) + sizeof(uint64))
 
@@ -99,6 +100,17 @@ uint8 strConcat(string String, uint64 Count, char* Characters, ...)
     va_list CharactersArgs;
     uint64 current;
     char* CharactersTemp;
+
+    if (String == NULL)
+    {
+        printf("strConcat(): String must not be NULL\nParams: String: %p, Count: %lld, Characters: %p\n", String, Count, Characters);
+        exit(1);
+    }
+    if (Count < 2)
+    {
+        printf("strConcat(): Count must be at least 2\nParams: String: %p, Count: %lld, Characters: %p\n", String, Count, Characters);
+        exit(1);
+    }
 
     va_start(CharactersArgs, Characters);
     StringLengthTMP = strLength(Characters) - 1;
