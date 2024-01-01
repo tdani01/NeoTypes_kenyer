@@ -238,8 +238,8 @@ uint8 DOUBLEtoSTR(double Number, string String)
     whole = (uint64)trunc(Number);
     fraction = Number - trunc(Number);
 
-    for (i = 1; whole / i > 10; i *= 10);
-    for (; i > 0; i /= 10)
+    for (i = 1; 10 < whole / i; i *= 10);
+    for (; 0 < i; i /= 10)
     {
         strAppend(String, whole / i + '0');
         whole %= i;
@@ -248,10 +248,10 @@ uint8 DOUBLEtoSTR(double Number, string String)
     {
         strAppend(String, '.');
 
-        for (; fraction - trunc(fraction) > 0; fraction *= 10);
+        for (; 0 < fraction - trunc(fraction); fraction *= 10);
 
-        for (i = 1; (uint64)round(fraction) / i > 10; i *= 10);
-        for (; i > 0; i /= 10)
+        for (i = 1; 10 < (uint64)round(fraction) / i; i *= 10);
+        for (; 0 < i; i /= 10)
         {
             strAppend(String, (uint64)round(fraction) / i + '0');
             fraction = (uint64)round(fraction) % i;
