@@ -39,7 +39,6 @@ uint8 fileRead(char* FilePath, array Lines)
         else
         {
             arrInsert(Lines, Lines->Length)->String = line;
-            
             line = strNew();
         }
     }
