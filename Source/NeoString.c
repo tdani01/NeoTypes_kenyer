@@ -85,7 +85,7 @@ uint8 strAppend(string String, char Character)
         printf("strAppend(): Memory allocation failed\nParams: String: %p, Character: %c\n", String, Character);
         exit(1);
     }
-    
+
     String->String[String->Length - 2] = Character;
     String->String[String->Length - 1] = '\0';
 
@@ -143,13 +143,13 @@ uint8 strRead(string String)
 {
     char Character;
 
-    free(String->String);
-    String->String = (char*)malloc(sizeof(char) * 1);
+    String->String = (char*)realloc(String->String, sizeof(char*) * 1);
     if (String->String == NULL)
     {
-        String->Length = 0;
-        return 1;
+        printf("strRead(): Memory allocation failed\nParams: String: %p\n", String);
+        exit(1);
     }
+
     String->String[0] = '\0';
     String->Length = 1;
 
@@ -241,6 +241,19 @@ uint8 strSplit(array Array, char* Characters, char Character)
 logic strCompare(char* Characters1, char* Characters2)
 {
     uint64 Characters1Length;
+
+    if (Characters1 == Characters2)
+    {
+        return true;
+    }
+    if (Characters1 == NULL)
+    {
+        return false;
+    }
+    if (Characters2 == NULL)
+    {
+        return false;
+    }
 
     Characters1Length = strLength(Characters1);
     if (Characters1Length == strLength(Characters2))
