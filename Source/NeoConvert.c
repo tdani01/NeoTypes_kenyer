@@ -145,6 +145,7 @@ double STRtoDOUBLE(char* Characters, logic* Success)
 {
     double result;
 
+    uint64 CharactersLength;
     uint64 decimal;
 
     if (Characters == NULL)
@@ -153,8 +154,9 @@ double STRtoDOUBLE(char* Characters, logic* Success)
         exit(1);
     }
 
-    decimal = strLength(Characters) - 1;
-    for (uint64 i = 0; i < strLength(Characters) - 1; i++)
+    CharactersLength = strLength(Characters);
+    decimal = CharactersLength - 1;
+    for (uint64 i = 0; i < CharactersLength - 1; i++)
     {
         if (Characters[i] == '.' || Characters[i] == ',')
         {
@@ -176,7 +178,7 @@ double STRtoDOUBLE(char* Characters, logic* Success)
         }
         result += (Characters[i] - '0') * pow(10, decimal - 1 - i);
     }
-    for (uint64 i = decimal + 1; i < strLength(Characters) - 1; i++)
+    for (uint64 i = decimal + 1; i < CharactersLength - 1; i++)
     {
         if ((Characters[i] < '0' || '9' < Characters[i]))
         {
