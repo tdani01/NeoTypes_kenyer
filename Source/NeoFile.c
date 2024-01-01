@@ -17,7 +17,8 @@ uint8 fileRead(char* FilePath, array Lines)
         exit(1);
     }
 
-    Lines->Values = realloc(Lines->Values, 0);
+    free(Lines->Values);
+    Lines->Values = NULL;
     Lines->Length = 0;
 
     file = fopen(FilePath, "r");
