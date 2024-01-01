@@ -72,13 +72,20 @@ uint8 strInit(string String, char* Characters)
 
 uint8 strAppend(string String, char Character)
 {
+    if (String == NULL)
+    {
+        printf("strAppend(): String must not be NULL\nParams: String: %p, Character: %c\n", String, Character);
+        exit(1);
+    }
+
     String->Length++;
     String->String = (char*)realloc(String->String, sizeof(char) * String->Length);
     if (String->String == NULL)
     {
-        String->Length = 0;
-        return 1;
+        printf("strAppend(): Memory allocation failed\nParams: String: %p, Character: %c\n", String, Character);
+        exit(1);
     }
+    
     String->String[String->Length - 2] = Character;
     String->String[String->Length - 1] = '\0';
 
