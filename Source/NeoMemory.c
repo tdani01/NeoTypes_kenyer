@@ -4,6 +4,16 @@ void* memCopy(void* Source, uint64 Size)
 {
     void* result;
 
+    if (Source == NULL && Size != 0)
+    {
+        printf("memCopy(): Null Source with non-zero Size\nParams: Source: %p, Size: %lld\n", Source, Size);
+        exit(1);
+    }
+    if (Size == 0)
+    {
+        return NULL;
+    }
+
     result = malloc(Size);
     if (result == NULL)
     {
@@ -19,6 +29,17 @@ void* memCopy(void* Source, uint64 Size)
 uint8 memCopyTo(void* Source, void* Destination, uint64 Size)
 {
     uint64 i;
+
+    if (Source == NULL && Size != 0)
+    {
+        printf("memCopyTo(): Null Source with non-zero Size\nParams: Source: %p, Destination: %p, Size: %lld\n", Source, Destination, Size);
+        exit(1);
+    }
+    if (Destination == NULL && Size != 0)
+    {
+        printf("memCopyTo(): Null Destination with non-zero Size\nParams: Source: %p, Destination: %p, Size: %lld\n", Source, Destination, Size);
+        exit(1);
+    }
 
     for (i = 0; i < Size / sizeof(uint64); i++)
     {
