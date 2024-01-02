@@ -44,7 +44,15 @@ uint8 fileRead(char* FilePath, array Lines)
         }
     }
 
-    strPurge(line);
+    if (1 < line->Length)
+    {
+        arrInsert(Lines, Lines->Length)->String = line;
+    }
+    else
+    {
+        strPurge(line);
+    }
+
     fclose(file);
 
     return 0;
