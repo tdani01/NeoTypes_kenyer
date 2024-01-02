@@ -25,7 +25,8 @@ Set the value of the new Element: arrInsert(Array, Index)->uInt = 10;
 Removes an element from the Array at the given Index.
 
 ### uint8 arrPurge(array Array)
-Frees the Array from the memory with all of its Elements.
+Frees the Array from the memory with all of its Elements.\
+It is safe to pass NULL to this function.
 
 ## NeoString.c
 

@@ -63,7 +63,8 @@ Set the value of the new Element: arrInsert(Array, Index)->uInt = 10;*/
 NeoTypes* arrInsert(array Array, uint64 Index);
 /*Removes an element from the Array at the given Index.*/
 uint8 arrRemove(array Array, uint64 Index);
-/*Frees the Array from the memory with all of its Elements.*/
+/*Frees the Array from the memory with all of its Elements.
+It is safe to pass NULL to this function.*/
 uint8 arrPurge(array Array);
 
 //____________________________________________NeoString.c____________________________________________//
