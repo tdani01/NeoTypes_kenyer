@@ -117,6 +117,17 @@ uint8 memSave(void* Source, uint64 Size, char* FilePath)
 {
     FILE* file;
 
+    if (Source == NULL)
+    {
+        printf("memSave(): Source must not be NULL\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
+        exit(1);
+    }
+    if (FilePath == NULL)
+    {
+        printf("memSave(): FilePath must not be NULL\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
+        exit(1);
+    }
+
     file = fopen(FilePath, "w");
     if (file == NULL)
     {
