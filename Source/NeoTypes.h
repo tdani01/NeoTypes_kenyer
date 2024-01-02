@@ -77,35 +77,6 @@ logic strCompare(char* Characters1, char* Characters2);
 
 uint8 strPurge(string String);
 
-//_____________________________________________NeoList.c_____________________________________________//
-
-struct listStruct
-{
-    listCache_t Cache;
-    uint64 Length;
-};
-struct listCacheStruct
-{
-    listNode* Nodes;
-    uint64 Size;
-    uint64 Coverage;
-};
-struct listNodeStruct
-{
-    listNode Next;
-    void* Value;
-};
-
-list listNew();
-
-uint8 listInsert(list List, uint64 Index, void* Value);
-uint8 listRemove(list List, uint64 Index);
-listNode listGet(list List, uint64 Index);
-
-uint8 listCache(list List, uint64 CacheCoverage);
-
-uint8 listPurge(list List);
-
 //____________________________________________NeoConvert.c___________________________________________//
 
 uint64 STRtoUINT(char* Characters, logic* Success);
