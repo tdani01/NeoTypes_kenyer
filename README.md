@@ -7,23 +7,19 @@ A type library for C that contains: new variable names, bool, dynamic array, str
 
 ### array arrNew(uint64 Length)
 Creates a new array with the given length.\
-Returns the address of the array or NULL if fails.\
-Warning: calling this function on an initialized array can cause memory leaks, before calling this function second time you must use arrPurge().\
-Important: you must always initialize an array with this function before use.
+Returns the address of the newly allocated array.\
+You must initialize every array with this function before use!
 
-### uint8 arrInit(array Array, uint64 Length, void* Values, ...)
-Clears the elements of the given array and initializes it with the new ones.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the Array->Values will be NULL and the Array->Length will be 0.\
-Important: if the previous elements of the array were pointers allocated with a malloc(), calloc() or realloc() it's recommended to first call free() on those pointers to avoid memory leaks.\
-Note: this function can not replace the arrNew() function.
+### NeoTypes* arrElement(array Array, uint64 Index)
+Returns an element from the array at the given index.\
+Assign a value to an element: arrElement(Array, Index)->uInt = 10;\
+Get a value from an element: uint8 a = arrElement(Array, Index)->uInt;
 
 ### uint8 arrInsert(array Array, uint64 Index, void* Value)
-Inserts a new element into an array.\
-To add a new element to the end of an array you must use Array->Length as index.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the Array->Values will be NULL and the Array->Length will be 0.\
-Important: failures can lead to memory leaks.
+Inserts a new element to the array at the given index.\
+Returns the address of the new element.\
+The default value of the new element is 0.\
+Set the value of the new element: arrInsert(Array, Index)->uInt = 10;
 
 ### uint8 arrRemove(array Array, uint64 Index)
 Removes an element from an array at the given index.\
