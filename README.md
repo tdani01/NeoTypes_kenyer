@@ -70,7 +70,7 @@ If it fails it will return 0 as result.
 
 ### uint8 UINTtoSTR(uint64 Number, string String)
 Converts an Unsigned Integer to String.\
-Returns 0 on success and 1 on error.
+Returns 0 on success or 1 on error.
 
 ### sint64 STRtoSINT(char* Characters, logic* Success)
 Converts the String to a Signed Integer.\
@@ -79,7 +79,7 @@ If it fails it will return 0 as result.
 
 ### uint8 SINTtoSTR(sint64 Number, string String)
 Converts a Signed Integer to String.\
-Returns 0 on success and 1 on error.
+Returns 0 on success or 1 on error.
 
 ### double STRtoDOUBLE(char* Characters, logic* Success)
 Converts the String to a Double.\
@@ -88,17 +88,17 @@ If it fails it will return 0 as result.
 
 ### uint8 DOUBLEtoSTR(double Number, string String)
 Converts a Double to String.\
-Returns 0 on success and 1 on error.
+Returns 0 on success or 1 on error.
 
 ## NeoFile.c
 
 ### logic fileRead(char* FilePath, array Lines)
 Reads the content of a text file and puts its lines into an Array.\
-Returns 0 on Success and 1 on Error.
+Returns 0 on Success or 1 on Error.
 
 ### logic fileWrite(array Lines, char* FilePath)
 Writes the content of an Array of Strings line by line into a text file.\
-Returns 0 on Success and 1 on Error.
+Returns 0 on Success or 1 on Error.
 
 ## NeoMemory.c
 
@@ -120,4 +120,4 @@ You must preallocate the Destination to the correct Size.
 
 ### uint8 memSave(void* Source, uint64 Size, char* FilePath)
 Saves data from the memory into a file.\
-Returns 0 on Success and 1 on Error.
+Returns 0 on Success or 1 on Error.
