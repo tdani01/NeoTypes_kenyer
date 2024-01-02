@@ -55,7 +55,7 @@ Reads the content of standard input until '\n' and stores it in a String.
 Splits the String (char*) into an Array by the given Character.
 
 ### logic strCompare(char* Characters1, char* Characters2)
-Compares two Strings (char*) Character by Character and returns true if the are equal or false if they differs.
+Compares two Strings (char*) Character by Character and returns true if they are equal or false if they differs.
 
 ### uint8 strPurge(string String)
 Frees the String from the memory and its String->String value.\
