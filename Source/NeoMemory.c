@@ -87,6 +87,17 @@ uint8 memLoadTo(char* FilePath, void* Destination, uint64 Size)
 {
     FILE* file;
 
+    if (FilePath == NULL)
+    {
+        printf("memLoadTo(): FilePath must not be NULL\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
+        exit(1);
+    }
+    if (Destination == NULL && Size != 0)
+    {
+        printf("memLoadTo(): Null Destination with non-zero Size\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
+        exit(1);
+    }
+
     file = fopen(FilePath, "r");
     if (file == NULL)
     {
