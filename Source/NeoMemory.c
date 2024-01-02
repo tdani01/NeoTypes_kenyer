@@ -57,6 +57,16 @@ void* memLoad(char* FilePath, uint64 Size)
 {
     void* result;
 
+    if (FilePath == NULL)
+    {
+        printf("memLoad(): FilePath must not be NULL\nParams: FilePath: %s, Size: %lld\n", FilePath, Size);
+        exit(1);
+    }
+    if (Size == 0)
+    {
+        return NULL;
+    }
+
     result = malloc(Size);
     if (result == NULL)
     {
