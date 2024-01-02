@@ -33,34 +33,18 @@ uint8 fileRead(char* FilePath, array Lines)
     {
         character = fgetc(file);
 
-        if (character != '\n')
+        if (character != '\n' && !feof(file))
         {
             strAppend(line, character);
         }
         else
         {
-            if (1 < line->Length)
-            {
-                arrInsert(Lines, Lines->Length)->String = line;
-            }
-            else
-            {
-                strPurge(line);
-            }
-
+            arrInsert(Lines, Lines->Length)->String = line;
             line = strNew();
         }
     }
 
-    if (1 < line->Length)
-    {
-        arrInsert(Lines, Lines->Length)->String = line;
-    }
-    else
-    {
-        strPurge(line);
-    }
-
+    strPurge(line);
     fclose(file);
 
     return 0;
