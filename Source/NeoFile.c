@@ -29,11 +29,17 @@ uint8 fileRead(char* FilePath, array Lines)
 
     line = strNew();
 
-    while (!feof(file))
+    while (true)
     {
         character = fgetc(file);
 
-        if (character != '\n' && !feof(file))
+        if (feof(file))
+        {
+            arrInsert(Lines, Lines->Length)->String = line;
+            break;
+        }
+
+        if (character != '\n')
         {
             strAppend(line, character);
         }
@@ -44,7 +50,6 @@ uint8 fileRead(char* FilePath, array Lines)
         }
     }
 
-    strPurge(line);
     fclose(file);
 
     return 0;
