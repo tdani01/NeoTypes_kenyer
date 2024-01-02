@@ -187,17 +187,9 @@ uint8 strSplit(array Array, char* Characters, char Character)
         {
             strAppend(StringTMP, Characters[i]);
         }
-        else
+        else if (1 < StringTMP->Length)
         {
-            if (1 < StringTMP->Length)
-            {
-                arrInsert(Array, Array->Length)->String = StringTMP;
-            }
-            else
-            {
-                strPurge(StringTMP);
-            }
-            
+            arrInsert(Array, Array->Length)->String = StringTMP;
             StringTMP = strNew();
         }
     }
