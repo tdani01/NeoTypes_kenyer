@@ -101,30 +101,34 @@ uint8 strPurge(string String);
 //____________________________________________NeoConvert.c___________________________________________//
 
 /*Converts the String to an Unsigned Integer.
-You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if error handling is not needed.
+You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if Error handling is not needed.
 If it fails it will return 0 as result.*/
 uint64 STRtoUINT(char* Characters, logic* Success);
 /*Converts an Unsigned Integer to String.
-Returns 0 on success and 1 on error.*/
+Returns 0 on Success and 1 on Error.*/
 uint8 UINTtoSTR(uint64 Number, string String);
 /*Converts the String to a Signed Integer.
-You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if error handling is not needed.
+You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if Error handling is not needed.
 If it fails it will return 0 as result.*/
 sint64 STRtoSINT(char* Characters, logic* Success);
 /*Converts a Signed Integer to String.
-Returns 0 on success and 1 on error.*/
+Returns 0 on Success and 1 on Error.*/
 uint8 SINTtoSTR(sint64 Number, string String);
 /*Converts the String to a Double.
-You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if error handling is not needed.
+You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if Error handling is not needed.
 If it fails it will return 0 as result.*/
 double STRtoDOUBLE(char* Characters, logic* Success);
 /*Converts a Double to String.
-Returns 0 on success and 1 on error.*/
+Returns 0 on Success and 1 on Error.*/
 uint8 DOUBLEtoSTR(double Number, string String);
 
 //_____________________________________________NeoFile.c_____________________________________________//
 
+/*Reads the content of a text file and puts its lines into an Array.
+Returns 0 on Success and 1 on Error.*/
 uint8 fileRead(char* FilePath, array Lines);
+/*Writes the content of an Array of Strings line by line into a text file.
+Returns 0 on Success and 1 on Error.*/
 uint8 fileWrite(array Lines, char* FilePath);
 
 //____________________________________________NeoMemory.c____________________________________________//

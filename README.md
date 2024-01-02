@@ -93,15 +93,12 @@ Returns 0 on success and 1 on error.
 ## NeoFile.c
 
 ### logic fileRead(char* FilePath, array Lines)
-Reads a text file and puts its lines into an array of strings.\
-Returns true on success and false on error.\
-Important: failures can lead to memory leaks.\
-Note: this function will not clear the values of the passed array, instead it will insert every line as a new string to the end of the array.
+Reads the content of a text file and puts its lines into an Array.\
+Returns 0 on Success and 1 on Error.
 
 ### logic fileWrite(array Lines, char* FilePath)
-Writes the content of an array of strings line by line into a text file.\
-Returns true on success and false on error.\
-Note: every element of the passed array needs to a be a string.
+Writes the content of an Array of Strings line by line into a text file.\
+Returns 0 on Success and 1 on Error.
 
 ## NeoMemory.c
 
