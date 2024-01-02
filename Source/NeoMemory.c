@@ -6,7 +6,7 @@ void* memCopy(void* Source, uint64 Size)
 
     if (Source == NULL && Size != 0)
     {
-        printf("memCopy(): Null Source with non-zero Size\nParams: Source: %p, Size: %lld\n", Source, Size);
+        printf("memCopy(): NULL Source with non-zero Size\nParams: Source: %p, Size: %lld\n", Source, Size);
         exit(1);
     }
     if (Size == 0)
@@ -32,12 +32,12 @@ uint8 memCopyTo(void* Source, void* Destination, uint64 Size)
 
     if (Source == NULL && Size != 0)
     {
-        printf("memCopyTo(): Null Source with non-zero Size\nParams: Source: %p, Destination: %p, Size: %lld\n", Source, Destination, Size);
+        printf("memCopyTo(): NULL Source with non-zero Size\nParams: Source: %p, Destination: %p, Size: %lld\n", Source, Destination, Size);
         exit(1);
     }
     if (Destination == NULL && Size != 0)
     {
-        printf("memCopyTo(): Null Destination with non-zero Size\nParams: Source: %p, Destination: %p, Size: %lld\n", Source, Destination, Size);
+        printf("memCopyTo(): NULL Destination with non-zero Size\nParams: Source: %p, Destination: %p, Size: %lld\n", Source, Destination, Size);
         exit(1);
     }
     if (Size == 0)
@@ -63,7 +63,7 @@ void* memLoad(char* FilePath, uint64 Size)
 
     if (FilePath == NULL && Size != 0)
     {
-        printf("memLoad(): Null FilePath with non-zero Size\nParams: FilePath: %s, Size: %lld\n", FilePath, Size);
+        printf("memLoad(): NULL FilePath with non-zero Size\nParams: FilePath: %s, Size: %lld\n", FilePath, Size);
         exit(1);
     }
     if (Size == 0)
@@ -93,12 +93,12 @@ uint8 memLoadTo(char* FilePath, void* Destination, uint64 Size)
 
     if (FilePath == NULL && Size != 0)
     {
-        printf("memLoadTo(): Null FilePath with non-zero Size\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
+        printf("memLoadTo(): NULL FilePath with non-zero Size\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
         exit(1);
     }
     if (Destination == NULL && Size != 0)
     {
-        printf("memLoadTo(): Null Destination with non-zero Size\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
+        printf("memLoadTo(): NULL Destination with non-zero Size\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
         exit(1);
     }
     if (Size == 0)
@@ -127,12 +127,12 @@ uint8 memSave(void* Source, uint64 Size, char* FilePath)
 
     if (Source == NULL && Size != 0)
     {
-        printf("memSave(): Null Source with non-zero Size\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
+        printf("memSave(): NULL Source with non-zero Size\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
         exit(1);
     }
     if (FilePath == NULL && Size != 0)
     {
-        printf("memSave(): Null FilePath with non-zero Size\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
+        printf("memSave(): NULL FilePath with non-zero Size\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
         exit(1);
     }
     if (Size == 0)
