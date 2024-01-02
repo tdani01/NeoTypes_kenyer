@@ -165,10 +165,7 @@ uint8 strRead(string String)
 
     while ((Character = getchar()) != '\n')
     {
-        if (strAppend(String, Character) != 0)
-        {
-            return 1;
-        }
+        strAppend(String, Character);
     }
 
     return 0;
