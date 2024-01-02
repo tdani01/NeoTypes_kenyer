@@ -19,9 +19,6 @@ typedef signed long long sint64;
 
 typedef struct arrayStruct* array;
 typedef struct stringStruct* string;
-typedef struct listStruct* list;
-typedef struct listCacheStruct* listCache_t;
-typedef struct listNodeStruct* listNode;
 
 typedef union
 {
@@ -33,7 +30,6 @@ typedef union
 
     array Array;
     string String;
-    list List;
 
     void* Pointer;
 } NeoTypes;
