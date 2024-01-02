@@ -1,18 +1,7 @@
 # NeoTypes
-A type library for C that contains: new variable names, bool, dynamic array, string, list, conversion between numeric and string types, casts between integer and floating point types. And a little file management too.
+A type library for C that contains: new variable names, bool, dynamic array, string, conversion between numeric and string types. And a little memory/file management too.
 
 # Wiki
-
-## NeoCast.c
-
-### uint64 asUINT(double Value)
-Process a binary value stored in a double as an unsigned integer.
-
-### uint64 asSINT(double Value)
-Process a binary value stored in a double as a signed integer.
-
-### double asDOUBLE(uint64 Value)
-Process a binary value stored in an integer as a double.
 
 ## NeoArray.c
 
@@ -95,46 +84,6 @@ Compares two strings character by character and returns true if they are equal.
 ### uint8 strPurge(string String)
 Deallocates a string from the memory.\
 Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.
-
-## NeoList.c
-
-### list listNew()
-Creates a new empty list.\
-Returns the address of the list or NULL if fails.\
-Warning: calling this function on an initialized list can cause memory leaks, before calling this function second time you must use listPurge().\
-Important: you must always initialize a list with this function before use.
-
-### uint8 listInsert(list List, uint64 Index, void* Value)
-Inserts a new element into a list.\
-To add a new element to the end of a list you must use List->Length as index.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the insertion will be cancelled and the list remains intact.\
-Note: always resets the cache.
-
-### uint8 listRemove(list List, uint64 Index)
-Removes an element from a list at the given index.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the List->Cache->Nodes will be NULL and the other values of the List->Cache will be 0.\
-Important: if the element to be removed is a pointer allocated with a malloc(), calloc() or realloc() it's recommended to call free() on it to avoid memory leaks, failures can lead to memory leaks.\
-Note: always resets the cache.
-
-### listNode listGet(list List, uint64 Index)
-Returns the indexed node from a list.\
-You can get or set the value of the node with: Node->Value.
-
-### uint8 listCache(list List, uint64 CacheCoverage)
-Generates cache for a list.\
-Cacheing is recommended when a list is long enough to slow down the program.\
-Too few cacheing will make the list slower, too much cacheing will consume more memory.\
-NumberOfCachePoint: List->Length / CacheCoverage.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the List->Cache->Nodes will be NULL and the other values of the List->Cache will be 0.\
-Important: failures can lead to memory leaks.
-
-### int8 listPurge(list List)
-Deallocates a list from the memory with all of its elements.\
-Important: if the elements of the list were pointers allocated with a malloc(), calloc() or realloc() it's recommended to first call free() on those pointers to avoid memory leaks.\
-Note: it's recommended to set the List's value to NULL after calling this function, it's safe to pass a NULL value to this function.
 
 ## NeoConvert.c
 
