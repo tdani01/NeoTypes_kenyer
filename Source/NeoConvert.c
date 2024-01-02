@@ -45,7 +45,7 @@ uint8 UINTtoSTR(uint64 Number, string String)
         exit(1);
     }
 
-    strInit(String, "");
+    strInit(String, (char*)"");
 
     for (i = 1; 10 < Number / i; i *= 10);
     for (; 0 < i; i /= 10)
@@ -121,7 +121,7 @@ uint8 SINTtoSTR(sint64 Number, string String)
         exit(1);
     }
 
-    strInit(String, "");
+    strInit(String, (char*)"");
 
     if (Number < 0)
     {
@@ -227,7 +227,7 @@ uint8 DOUBLEtoSTR(double Number, string String)
         exit(1);
     }
 
-    strInit(String, "");
+    strInit(String, (char*)"");
 
     if (Number < 0)
     {
