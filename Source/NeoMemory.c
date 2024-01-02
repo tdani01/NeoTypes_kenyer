@@ -40,6 +40,10 @@ uint8 memCopyTo(void* Source, void* Destination, uint64 Size)
         printf("memCopyTo(): Null Destination with non-zero Size\nParams: Source: %p, Destination: %p, Size: %lld\n", Source, Destination, Size);
         exit(1);
     }
+    if (Size == 0)
+    {
+        return 0;
+    }
 
     for (i = 0; i < Size / sizeof(uint64); i++)
     {
@@ -57,9 +61,9 @@ void* memLoad(char* FilePath, uint64 Size)
 {
     void* result;
 
-    if (FilePath == NULL)
+    if (FilePath == NULL && Size != 0)
     {
-        printf("memLoad(): FilePath must not be NULL\nParams: FilePath: %s, Size: %lld\n", FilePath, Size);
+        printf("memLoad(): Null FilePath with non-zero Size\nParams: FilePath: %s, Size: %lld\n", FilePath, Size);
         exit(1);
     }
     if (Size == 0)
@@ -87,15 +91,19 @@ uint8 memLoadTo(char* FilePath, void* Destination, uint64 Size)
 {
     FILE* file;
 
-    if (FilePath == NULL)
+    if (FilePath == NULL && Size != 0)
     {
-        printf("memLoadTo(): FilePath must not be NULL\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
+        printf("memLoadTo(): Null FilePath with non-zero Size\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
         exit(1);
     }
     if (Destination == NULL && Size != 0)
     {
         printf("memLoadTo(): Null Destination with non-zero Size\nParams: FilePath: %s, Destination: %p, Size: %lld\n", FilePath, Destination, Size);
         exit(1);
+    }
+    if (Size == 0)
+    {
+        return 0;
     }
 
     file = fopen(FilePath, "r");
@@ -117,15 +125,19 @@ uint8 memSave(void* Source, uint64 Size, char* FilePath)
 {
     FILE* file;
 
-    if (Source == NULL)
+    if (Source == NULL && Size != 0)
     {
-        printf("memSave(): Source must not be NULL\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
+        printf("memSave(): Null Source with non-zero Size\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
         exit(1);
     }
-    if (FilePath == NULL)
+    if (FilePath == NULL && Size != 0)
     {
-        printf("memSave(): FilePath must not be NULL\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
+        printf("memSave(): Null FilePath with non-zero Size\nParams: Source: %p, Size: %lld, FilePath: %s\n", Source, Size, FilePath);
         exit(1);
+    }
+    if (Size == 0)
+    {
+        return 0;
     }
 
     file = fopen(FilePath, "w");
