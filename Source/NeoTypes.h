@@ -81,7 +81,7 @@ uint64 strLength(char* Characters);
 Returns the address of the newly allocated String.
 You must initialize every String with this function before use.*/
 string strNew();
-/*Replaces the String->String of the given String with the given String (char*).*/
+/*Replaces the String->String of the String with the given String (char*).*/
 uint8 strInit(string String, char* Characters);
 /*Appends the given Character to the end of the String.*/
 uint8 strAppend(string String, char Character);

@@ -39,7 +39,7 @@ Returns the address of the newly allocated String.\
 You must initialize every String with this function before use.
 
 ### uint8 strInit(string String, char* Characters)
-Replaces the String->String of the given String with the given String (char*).
+Replaces the String->String of the String with the given String (char*).
 
 ### uint8 strAppend(string String, char Character)
 Appends the given Character to the end of the String.
