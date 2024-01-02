@@ -15,7 +15,7 @@ Returns an Element from the Array at the given Index.\
 Assign a value to an Element: arrElement(Array, Index)->uInt = 10;\
 Get a value from an Element: uint8 a = arrElement(Array, Index)->uInt;
 
-### uint8 arrInsert(array Array, uint64 Index, void* Value)
+### NeoTypes* arrInsert(array Array, uint64 Index)
 Inserts a new Element to the Array at the given Index.\
 Returns the address of the new Element.\
 The default value of the new Element is 0.\
@@ -31,51 +31,35 @@ It is safe to pass NULL to this function.
 ## NeoString.c
 
 ### uint64 strLength(char* Characters)
-Returns the length of a string (char*) with the '\0' included.
+Returns the Length of the String (char*) with the '\0' included.
 
 ### string strNew()
-Creates a new string, the String->String will be "\0" and the String->Length will be 1.\
-Returns the address of the string or NULL if fails.\
-Warning: calling this function on an initialized string can cause memory leaks, before calling this function second time you must use strPurge().\
-Important: you must always initialize a string with this function before use.
+Creates a new String, the String->String will be "\0" and the String->Length will be 1.\
+Returns the address of the newly allocated String.\
+You must initialize every String with this function before use.
 
 ### uint8 strInit(string String, char* Characters)
-Clears the string of the given string and initializes it with the new one.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the String->String will be NULL and the String->Length will be 0.\
-Note: this function can not replace the strNew() function.
+Replaces the String->String of the given String with the given String (char*).
 
 ### uint8 strAppend(string String, char Character)
-Appends a new character to the end of the string.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the String->String will be NULL and the String->Length will be 0.\
-Important: failures can lead to memory leaks.
+Appends the given Character to the end of the String.
 
 ### uint8 strConcat(string String, uint64 Count, char* Characters, ...)
-Concatenates two or more strings into one string.\
-Returns 0 on success and 1 on error.\
-Important: the number of the strings will be concatenated must be accurate.\
-Note: deallocating the target string is not needed, if fails every string will remain intact.
+Concatenates two or more Strings (char*) into one String.\
+The number of the Strings (char*) to be concatenated must be accurate.
 
 ### uint8 strRead(string String)
-Reads the contents of standard input until '\n' and stores it in a string.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the String->String will be NULL and the String->Length will be 0.\
-Important: failures can lead to memory leaks.
+Reads the content of standard input until '\n' and stores it in a String.
 
 ### uint8 strSplit(array Array, char* Characters, char Character)
-Splits a string into an array of strings by the given character.\
-You can access a particular string from the array: ((string)Array->Values[index])->String.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the result array may be broken and must be fixed manually using arrPurge() and arrNew().\
-Important: failures can lead to memory leaks.
+Splits the String (char*) into an Array by the given Character.
 
 ### logic strCompare(char* Characters1, char* Characters2)
-Compares two strings character by character and returns true if they are equal.
+Compares two Strings (char*) Character by Character and returns true if the are equal or false if they differs.
 
 ### uint8 strPurge(string String)
-Deallocates a string from the memory.\
-Note: it's recommended to set the String's value to NULL after calling this function, it's safe to pass a NULL value to this function.
+Frees the String from the memory and its String->String value.\
+It is safe to pass NULL to this function.
 
 ## NeoConvert.c
 

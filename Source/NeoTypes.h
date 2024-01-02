@@ -19,13 +19,13 @@ typedef unsigned long long uint64;
 typedef signed long long sint64;
 
 #define ARRAY_SIZE (sizeof(void*) + sizeof(uint64))
-/*Dynamically sized array, with insertion and deletion capabilities*/
+/*Dynamically sized Array, with insertion and deletion capabilities.*/
 typedef struct arrayStruct* array;
 #define STRING_SIZE (sizeof(void*) + sizeof(uint64))
-/*String that holds String and Length data*/
+/*String that holds String and Length data.*/
 typedef struct stringStruct* string;
 
-/*Universal data type for NeoTypes*/
+/*Universal data type for NeoTypes.*/
 typedef union
 {
     logic Logic;
@@ -75,19 +75,27 @@ struct stringStruct
     uint64 Length;
 };
 
+/*Returns the Length of the String (char*) with the '\0' included.*/
 uint64 strLength(char* Characters);
-
+/*Creates a new String, the String->String will be "\0" and the String->Length will be 1.
+Returns the address of the newly allocated String.
+You must initialize every String with this function before use.*/
 string strNew();
-
+/*Replaces the String->String of the given String with the given String (char*).*/
 uint8 strInit(string String, char* Characters);
+/*Appends the given Character to the end of the String.*/
 uint8 strAppend(string String, char Character);
-
+/*Concatenates two or more Strings (char*) into one String.
+The number of the Strings (char*) to be concatenated must be accurate.*/
 uint8 strConcat(string String, uint64 Count, char* Characters, ...);
+/*Reads the content of standard input until '\n' and stores it in a String.*/
 uint8 strRead(string String);
+/*Splits the String (char*) into an Array by the given Character.*/
 uint8 strSplit(array Array, char* Characters, char Character);
-
+/*Compares two Strings (char*) Character by Character and returns true if the are equal or false if they differs.*/
 logic strCompare(char* Characters1, char* Characters2);
-
+/*Frees the String from the memory and its String->String value.
+It is safe to pass NULL to this function.*/
 uint8 strPurge(string String);
 
 //____________________________________________NeoConvert.c___________________________________________//
