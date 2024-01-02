@@ -6,31 +6,26 @@ A type library for C that contains: new variable names, bool, dynamic array, str
 ## NeoArray.c
 
 ### array arrNew(uint64 Length)
-Creates a new array with the given length.\
-Returns the address of the newly allocated array.\
-You must initialize every array with this function before use!
+Creates a new Array with the given Length.\
+Returns the address of the newly allocated Array.\
+You must initialize every Array with this function before use!
 
 ### NeoTypes* arrElement(array Array, uint64 Index)
-Returns an element from the array at the given index.\
-Assign a value to an element: arrElement(Array, Index)->uInt = 10;\
-Get a value from an element: uint8 a = arrElement(Array, Index)->uInt;
+Returns an Element from the Array at the given Index.\
+Assign a value to an Element: arrElement(Array, Index)->uInt = 10;\
+Get a value from an Element: uint8 a = arrElement(Array, Index)->uInt;
 
 ### uint8 arrInsert(array Array, uint64 Index, void* Value)
-Inserts a new element to the array at the given index.\
-Returns the address of the new element.\
-The default value of the new element is 0.\
-Set the value of the new element: arrInsert(Array, Index)->uInt = 10;
+Inserts a new Element to the Array at the given Index.\
+Returns the address of the new Element.\
+The default value of the new Element is 0.\
+Set the value of the new Element: arrInsert(Array, Index)->uInt = 10;
 
 ### uint8 arrRemove(array Array, uint64 Index)
-Removes an element from an array at the given index.\
-Returns 0 on success and 1 on error.\
-Warning: if fails the Array->Values will be NULL and the Array->Length will be 0.\
-Important: if the element to be removed is a pointer allocated with a malloc(), calloc() or realloc() it's recommended to call free() on it to avoid memory leaks, failures can lead to memory leaks.
+Removes an element from the Array at the given Index.
 
 ### uint8 arrPurge(array Array)
-Deallocates an array from the memory with all of its elements.\
-Important: if the elements of the array were pointers allocated with a malloc(), calloc() or realloc() it's recommended to first call free() on those pointers to avoid memory leaks.\
-Note: it's recommended to set the Array's value to NULL after calling this function, it's safe to pass a NULL value to this function.
+Frees the Array from the memory with all of its Elements.
 
 ## NeoString.c
 

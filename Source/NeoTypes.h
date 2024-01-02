@@ -48,21 +48,22 @@ struct arrayStruct
     uint64 Length;
 };
 
-/*Creates a new array with the given length.
-Returns the address of the newly allocated array.
-You must initialize every array with this function before use.*/
+/*Creates a new Array with the given Length.
+Returns the address of the newly allocated Array.
+You must initialize every Array with this function before use.*/
 array arrNew(uint64 Length);
-/*Returns an element from the array at the given index.
-Assign a value to an element: arrElement(Array, Index)->uInt = 10;
-Get a value from an element: uint8 a = arrElement(Array, Index)->uInt;*/
+/*Returns an Element from the Array at the given Index.
+Assign a value to an Element: arrElement(Array, Index)->uInt = 10;
+Get a value from an Element: uint8 a = arrElement(Array, Index)->uInt;*/
 NeoTypes* arrElement(array Array, uint64 Index);
-/*Inserts a new element to the array at the given index.
-Returns the address of the new element.
-The default value of the new element is 0.
-Set the value of the new element: arrInsert(Array, Index)->uInt = 10;*/
+/*Inserts a new Element to the Array at the given Index.
+Returns the address of the new Element.
+The default value of the new Element is 0.
+Set the value of the new Element: arrInsert(Array, Index)->uInt = 10;*/
 NeoTypes* arrInsert(array Array, uint64 Index);
+/*Removes an element from the Array at the given Index.*/
 uint8 arrRemove(array Array, uint64 Index);
-
+/*Frees the Array from the memory with all of its Elements.*/
 uint8 arrPurge(array Array);
 
 //____________________________________________NeoString.c____________________________________________//
