@@ -64,10 +64,6 @@ uint8 fileWrite(array Lines, char* FilePath)
         printf("fileWrite(): FilePath must not be NULL\nParams: Lines: %p, FilePath: %s\n", Lines, FilePath);
         exit(1);
     }
-    if (Lines->Length == 0)
-    {
-        return 0;
-    }
 
     file = fopen(FilePath, "w");
     if (file == NULL)
