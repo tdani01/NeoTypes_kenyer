@@ -64,36 +64,30 @@ It is safe to pass NULL to this function.
 ## NeoConvert.c
 
 ### uint64 STRtoUINT(char* Characters, logic* Success)
-Converts a string to an unsigned integer.\
-You can check the success of the conversion by passing a logic variable
-by reference, it's safe to pass NULL if error handling is not needed.\
-If it fails it will return a 0 as result.
+Converts the String to an Unsigned Integer.\
+You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if error handling is not needed.\
+If it fails it will return 0 as result.
 
 ### uint8 UINTtoSTR(uint64 Number, string String)
-Converts an unsigned integer to a string.\
-The string will be deallocated and reinitialized, if the reinitialization fails the String->String will be NULL and the String->Length will be 0.\
+Converts an Unsigned Integer to String.\
 Returns 0 on success and 1 on error.
 
 ### sint64 STRtoSINT(char* Characters, logic* Success)
-Converts a string to a signed integer.\
-You can check the success of the conversion by passing a logic variable
-by reference, it's safe to pass NULL if error handling is not needed.\
-If it fails it will return a 0 as result.
+Converts the String to a Signed Integer.\
+You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if error handling is not needed.\
+If it fails it will return 0 as result.
 
 ### uint8 SINTtoSTR(sint64 Number, string String)
-Converts a signed integer to a string.\
-The string will be deallocated and reinitialized, if the reinitialization fails the String->String will be NULL and the String->Length will be 0.\
+Converts a Signed Integer to String.\
 Returns 0 on success and 1 on error.
 
 ### double STRtoDOUBLE(char* Characters, logic* Success)
-Converts a string to a double.\
-You can check the success of the conversion by passing a logic variable
-by reference, it's safe to pass NULL if error handling is not needed.\
-If it fails it will return a 0 as result.
+Converts the String to a Double.\
+You can check the Success of the conversion by passing a Logic variable by reference, it's safe to pass NULL if error handling is not needed.\
+If it fails it will return 0 as result.
 
 ### uint8 DOUBLEtoSTR(double Number, string String)
-Converts a double to a string.\
-The string will be deallocated and reinitialized, if the reinitialization fails the String->String will be NULL and the String->Length will be 0.\
+Converts a Double to String.\
 Returns 0 on success and 1 on error.
 
 ## NeoFile.c
