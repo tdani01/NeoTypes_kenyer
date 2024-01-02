@@ -104,4 +104,20 @@ Returns 0 on Success and 1 on Error.
 
 ### void* memCopy(void* Source, uint64 Size)
 Copies a block of memory.\
-Returns the address of the copied memory or NULL if the source is NULL or fails.
+Returns the address of the copied memory or NULL if Size was 0.
+
+### uint8 memCopyTo(void* Source, void* Destination, uint64 Size)
+Copies a block of memory to the given Destination.\
+You must preallocate the Destination to the correct Size.
+
+### void* memLoad(char* FilePath, uint64 Size)
+Loads data to the memory from a file.\
+Returns the address of the loaded data or NULL if Size was 0.
+
+### uint8 memLoadTo(char* FilePath, void* Destination, uint64 Size)
+Loads data to the given Destination.\
+You must preallocate the Destination to the correct Size.
+
+### uint8 memSave(void* Source, uint64 Size, char* FilePath)
+Saves data from the memory into a file.\
+Returns 0 on Success and 1 on Error.
