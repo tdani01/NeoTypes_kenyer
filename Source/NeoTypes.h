@@ -17,7 +17,9 @@ typedef signed int sint32;
 typedef unsigned long long uint64;
 typedef signed long long sint64;
 
+#define ARRAY_SIZE (sizeof(void*) + sizeof(uint64))
 typedef struct arrayStruct* array;
+#define STRING_SIZE (sizeof(void*) + sizeof(uint64))
 typedef struct stringStruct* string;
 
 typedef union

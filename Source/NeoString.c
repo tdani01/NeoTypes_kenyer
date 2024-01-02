@@ -1,7 +1,5 @@
 #include "NeoTypes.h"
 
-#define STRING_SIZE (sizeof(void*) + sizeof(uint64))
-
 uint64 strLength(char* Characters)
 {
     uint64 length;

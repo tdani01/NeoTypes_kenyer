@@ -1,7 +1,5 @@
 #include "NeoTypes.h"
 
-#define ARRAY_SIZE (sizeof(void*) + sizeof(uint64))
-
 array arrNew(uint64 Length)
 {
     array Array;
