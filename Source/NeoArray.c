@@ -2,10 +2,10 @@
 
 array arrNew(uint64 Length)
 {
-    array Array;
+    array result;
 
-    Array = (array)malloc(ARRAY_SIZE);
-    if (Array == NULL)
+    result = (array)malloc(ARRAY_SIZE);
+    if (result == NULL)
     {
         printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
         exit(1);
@@ -13,21 +13,21 @@ array arrNew(uint64 Length)
 
     if (Length == 0)
     {
-        Array->Values = NULL;
-        Array->Length = 0;
+        result->Values = NULL;
+        result->Length = 0;
     }
     else
     {
-        Array->Values = (NeoTypes*)calloc(Length, sizeof(NeoTypes));
-        if (Array->Values == NULL)
+        result->Values = (NeoTypes*)calloc(Length, sizeof(NeoTypes));
+        if (result->Values == NULL)
         {
             printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
             exit(1);
         }
-        Array->Length = Length;
+        result->Length = Length;
     }
 
-    return Array;
+    return result;
 }
 
 NeoTypes* arrElement(array Array, uint64 Index)

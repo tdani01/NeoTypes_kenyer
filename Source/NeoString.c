@@ -21,26 +21,26 @@ uint64 strLength(char* Characters)
 
 string strNew()
 {
-    string String;
+    string result;
 
-    String = (string)malloc(STRING_SIZE);
-    if (String == NULL)
+    result = (string)malloc(STRING_SIZE);
+    if (result == NULL)
     {
         printf("strNew(): Memory allocation failed\n");
         exit(1);
     }
 
-    String->String = (char*)malloc(sizeof(char) * 1);
-    if (String->String == NULL)
+    result->String = (char*)malloc(sizeof(char) * 1);
+    if (result->String == NULL)
     {
         printf("strNew(): Memory allocation failed\n");
         exit(1);
     }
 
-    String->String[0] = '\0';
-    String->Length = 1;
+    result->String[0] = '\0';
+    result->Length = 1;
 
-    return String;
+    return result;
 }
 
 uint8 strInit(string String, char* Characters)
@@ -235,6 +235,7 @@ logic strCompare(char* Characters1, char* Characters2)
         }
         return true;
     }
+
     return false;
 }
 
