@@ -1,5 +1,5 @@
 # NeoTypes
-A type library for C that contains: new variable names, bool, dynamic array, string, conversion between numeric and string types. And a little memory/file management too.
+A type library for C that includes: new variable names, bool, dynamic array, string, conversion between string and numeric types, and some file/memory management.
 
 # Wiki
 
