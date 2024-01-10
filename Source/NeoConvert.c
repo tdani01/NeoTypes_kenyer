@@ -47,7 +47,7 @@ uint8 UINTtoSTR(uint64 Number, string String)
 
     strInit(String, (char*)"");
 
-    for (i = 1; 10 < Number / i; i *= 10);
+    for (i = 1; 10 <= Number / i; i *= 10);
     for (; 0 < i; i /= 10)
     {
         strAppend(String, Number / i + '0');
@@ -129,7 +129,7 @@ uint8 SINTtoSTR(sint64 Number, string String)
         strAppend(String, '-');
     }
 
-    for (i = 1; 10 < Number / i; i *= 10);
+    for (i = 1; 10 <= Number / i; i *= 10);
     for (; 0 < i; i /= 10)
     {
         strAppend(String, Number / i + '0');
@@ -238,7 +238,7 @@ uint8 DOUBLEtoSTR(double Number, string String)
     whole = (uint64)trunc(Number);
     fraction = Number - trunc(Number);
 
-    for (i = 1; 10 < whole / i; i *= 10);
+    for (i = 1; 10 <= whole / i; i *= 10);
     for (; 0 < i; i /= 10)
     {
         strAppend(String, whole / i + '0');
@@ -250,7 +250,7 @@ uint8 DOUBLEtoSTR(double Number, string String)
 
         for (; 0 < fraction - trunc(fraction); fraction *= 10);
 
-        for (i = 1; 10 < (uint64)round(fraction) / i; i *= 10);
+        for (i = 1; 10 <= (uint64)round(fraction) / i; i *= 10);
         for (; 0 < i; i /= 10)
         {
             strAppend(String, (uint64)round(fraction) / i + '0');
