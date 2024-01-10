@@ -67,7 +67,7 @@ NeoTypes* arrInsert(array Array, uint64 Index)
         exit(1);
     }
 
-    for (uint64 i = Array->Length - 1; i > Index; i--)
+    for (uint64 i = Array->Length - 1; Index < i; i--)
     {
         Array->Values[i] = Array->Values[i - 1];
     }
