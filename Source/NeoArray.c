@@ -4,27 +4,23 @@ array arrNew(uint64 Length)
 {
     array result;
 
-    result = (array)malloc(ARRAY_SIZE);
-    if (result == NULL)
+    if ((result = malloc(ARRAY_SIZE)) == NULL)
     {
         printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
         exit(1);
     }
 
-    if (Length == 0)
+    if ((result->Length = Length) == 0)
     {
         result->Values = NULL;
-        result->Length = 0;
     }
     else
     {
-        result->Values = (NeoTypes*)calloc(Length, sizeof(NeoTypes));
-        if (result->Values == NULL)
+        if ((result->Values = (NeoTypes*)calloc(Length, sizeof(NeoTypes))) == NULL)
         {
             printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
             exit(1);
         }
-        result->Length = Length;
     }
 
     return result;
