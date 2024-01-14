@@ -17,8 +17,8 @@ uint8 fileRead(char* FilePath, array Lines)
         exit(1);
     }
 
-    free(Lines->Values);
-    Lines->Values = NULL;
+    free(Lines->Elements);
+    Lines->Elements = NULL;
     Lines->Length = 0;
 
     file = fopen(FilePath, "r");
@@ -82,7 +82,7 @@ uint8 fileWrite(array Lines, char* FilePath)
 
     for (uint64 i = 0; i < Lines->Length; i++)
     {
-        fprintf(file, "%s\n", Lines->Values[i].String->String);
+        fprintf(file, "%s\n", Lines->Elements[i].String->String);
     }
     fclose(file);
 

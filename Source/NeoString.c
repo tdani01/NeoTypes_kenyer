@@ -175,8 +175,8 @@ uint8 strSplit(array Array, char* Characters, char Character)
 {
     string StringTMP;
 
-    free(Array->Values);
-    Array->Values = NULL;
+    free(Array->Elements);
+    Array->Elements = NULL;
     Array->Length = 0;
 
     StringTMP = strNew();
