@@ -95,8 +95,7 @@ uint8 arrRemove(array Array, uint64 Index)
     }
     else
     {
-        Array->Elements = (NeoTypes*)realloc(Array->Elements, sizeof(NeoTypes) * Array->Length);
-        if (Array->Elements == NULL)
+        if ((Array->Elements = realloc(Array->Elements, sizeof(NeoTypes) * Array->Length)) == NULL)
         {
             printf("arrRemove(): Memory allocation failed\nParams: Array: %p, Index: %lld\n", Array, Index);
             exit(1);
