@@ -52,6 +52,10 @@ struct arrayStruct
 Returns the address of the newly allocated Array.
 You must initialize every Array with this function before use.*/
 array arrNew(uint64 Length);
+/*Returns an Element from the Array at the given Index.
+Assign a value to an Element: arrElement(Array, Index)->uInt = 10;
+Get a value from an Element: uint8 a = arrElement(Array, Index)->uInt;*/
+NeoTypes* arrElement(array Array, uint64 Index);
 /*Inserts a new Element to the Array at the given Index.
 Returns the address of the new Element.
 The default value of the new Element is 0.
