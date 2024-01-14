@@ -113,7 +113,7 @@ uint8 arrPurge(array Array)
         return 0;
     }
 
-    free((Array)->Elements);
+    free(Array->Elements);
     free(Array);
 
     return 0;
