@@ -12,11 +12,11 @@ array arrNew(uint64 Length)
 
     if ((result->Length = Length) == 0)
     {
-        result->Values = NULL;
+        result->Elements = NULL;
     }
     else
     {
-        if ((result->Values = calloc(Length, sizeof(NeoTypes))) == NULL)
+        if ((result->Elements = calloc(Length, sizeof(NeoTypes))) == NULL)
         {
             printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
             exit(1);
@@ -39,7 +39,7 @@ NeoTypes* arrElement(array Array, uint64 Index)
         exit(1);
     }
 
-    return &Array->Values[Index];
+    return &Array->Elements[Index];
 }
 
 NeoTypes* arrInsert(array Array, uint64 Index)
@@ -55,9 +55,7 @@ NeoTypes* arrInsert(array Array, uint64 Index)
         exit(1);
     }
 
-    Array->Length++;
-    Array->Values = (NeoTypes*)realloc(Array->Values, sizeof(NeoTypes) * Array->Length);
-    if (Array->Values == NULL)
+    if ((Array->Elements = realloc(Array->Elements, sizeof(NeoTypes) * ++Array->Length)) == NULL)
     {
         printf("arrInsert(): Memory allocation failed\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
@@ -65,11 +63,11 @@ NeoTypes* arrInsert(array Array, uint64 Index)
 
     for (uint64 i = Array->Length - 1; Index < i; i--)
     {
-        Array->Values[i] = Array->Values[i - 1];
+        Array->Elements[i] = Array->Elements[i - 1];
     }
-    Array->Values[Index].uInt = 0;
+    Array->Elements[Index].uInt = 0;
 
-    return &Array->Values[Index];
+    return &Array->Elements[Index];
 }
 
 uint8 arrRemove(array Array, uint64 Index)
@@ -84,27 +82,21 @@ uint8 arrRemove(array Array, uint64 Index)
         printf("arrRemove(): Index out of range\nParams: Array: %p, Index: %lld\n", Array, Index);
         exit(1);
     }
-    if (Array->Length == 0)
-    {
-        printf("arrRemove(): Array must not be empty\nParams: Array: %p, Index: %lld\n", Array, Index);
-        exit(1);
-    }
 
     for (uint64 i = Index; i < Array->Length - 1; i++)
     {
-        Array->Values[i] = Array->Values[i + 1];
+        Array->Elements[i] = Array->Elements[i + 1];
     }
 
-    Array->Length--;
-    if (Array->Length == 0)
+    if (--Array->Length == 0)
     {
-        free(Array->Values);
-        Array->Values = NULL;
+        free(Array->Elements);
+        Array->Elements = NULL;
     }
     else
     {
-        Array->Values = (NeoTypes*)realloc(Array->Values, sizeof(NeoTypes) * Array->Length);
-        if (Array->Values == NULL)
+        Array->Elements = (NeoTypes*)realloc(Array->Elements, sizeof(NeoTypes) * Array->Length);
+        if (Array->Elements == NULL)
         {
             printf("arrRemove(): Memory allocation failed\nParams: Array: %p, Index: %lld\n", Array, Index);
             exit(1);
@@ -121,7 +113,7 @@ uint8 arrPurge(array Array)
         return 0;
     }
 
-    free((Array)->Values);
+    free((Array)->Elements);
     free(Array);
 
     return 0;

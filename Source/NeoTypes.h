@@ -44,7 +44,7 @@ typedef union
 
 struct arrayStruct
 {
-    NeoTypes* Values;
+    NeoTypes* Elements;
     uint64 Length;
 };
 
