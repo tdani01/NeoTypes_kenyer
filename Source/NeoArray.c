@@ -16,7 +16,7 @@ array arrNew(uint64 Length)
     }
     else
     {
-        if ((result->Values = (NeoTypes*)calloc(Length, sizeof(NeoTypes))) == NULL)
+        if ((result->Values = calloc(Length, sizeof(NeoTypes))) == NULL)
         {
             printf("arrNew(): Memory allocation failed\nParams: Length: %lld\n", Length);
             exit(1);
